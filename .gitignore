@@ -1,0 +1,34 @@
+# ── Secrets (NEVER commit these) ─────────────────────────────────────────────
+local.properties
+app/google-services.json
+*.keystore
+*.jks
+**/*.env
+**/.env.*
+
+# ── Build outputs ─────────────────────────────────────────────────────────────
+.gradle/
+build/
+app/build/
+agent-core/build/
+*.apk
+*.aab
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+*.iml
+.DS_Store
+
+# ── Room schema exports (optional — some teams commit these) ─────────────────
+# app/schemas/
+
+# ── Python gateway ────────────────────────────────────────────────────────────
+gateway/**/__pycache__/
+gateway/**/*.pyc
+gateway/**/.venv/
+gateway/**/venv/
+
+# ── Android ───────────────────────────────────────────────────────────────────
+captures/
+.externalNativeBuild/
+.cxx/

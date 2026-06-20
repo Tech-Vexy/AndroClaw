@@ -1,0 +1,179 @@
+Initialized native services in: C:\Users\Veldrine\.gradle\native
+Initialized jansi services in: C:\Users\Veldrine\.gradle\native
+The client will now receive all logging from the daemon (pid: 34476). The daemon log file: C:\Users\Veldrine\.gradle\daemon\9.4.1\daemon-34476.out.log
+Starting 34th build in daemon [uptime: 7 hrs 23 mins 7.327 secs, performance: 98%, GC rate: 0.00/s, heap usage: 14% of 512 MiB, non-heap usage: 50% of 384 MiB]
+Using 8 worker leases.
+Operational build model parameters: {cachingModelBuilding=false, configurationCache=false, configurationCacheDisabledReason=null, configurationCacheParallelLoad=false, configurationCacheParallelStore=false, configureOnDemand=false, invalidateCoupledProjects=false, isolatedProjects=false, modelAsProjectDependency=false, modelBuilding=false, parallelModelBuilding=false, parallelProjectConfiguration=false, parallelProjectExecution=false, resilientModelBuilding=false}
+Now considering [C:\Users\Veldrine\Projects\androclaw] as hierarchies to watch
+Watching the file system is configured to be enabled if available
+File system watching is active
+Starting Build
+Settings evaluated using settings file 'C:\Users\Veldrine\Projects\androclaw\settings.gradle.kts'.
+Projects loaded. Root project using build file 'C:\Users\Veldrine\Projects\androclaw\build.gradle.kts'.
+Included projects: [root project 'OpenClaw', project ':agent-core', project ':app']
+
+> Configure project :
+Evaluating root project 'OpenClaw' using build file 'C:\Users\Veldrine\Projects\androclaw\build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '8.5.0', apply: false]
+Resolved plugin [id: 'com.android.library', version: '8.5.0', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.2.0', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.0', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.0', apply: false]
+Resolved plugin [id: 'com.google.devtools.ksp', version: '2.2.0-2.0.2', apply: false]
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.2.0', apply: false]
+Resolved plugin [id: 'com.google.gms.google-services', version: '4.4.2', apply: false]
+
+> Configure project :agent-core
+Evaluating project ':agent-core' using build file 'C:\Users\Veldrine\Projects\androclaw\agent-core\build.gradle.kts'.
+Resolved plugin [id: 'org.jetbrains.kotlin.multiplatform', version: '2.2.0']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.0']
+Resolved plugin [id: 'com.android.library', version: '8.5.0']
+Build c27c1266-7d1f-4cd2-83ba-151ce166904e is started
+Using Kotlin Gradle Plugin gradle813 variant
+Using default execution profile
+
+> Configure project :app
+Evaluating project ':app' using build file 'C:\Users\Veldrine\Projects\androclaw\app\build.gradle.kts'.
+Resolved plugin [id: 'com.android.application', version: '8.5.0']
+Resolved plugin [id: 'org.jetbrains.kotlin.android', version: '2.2.0']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.serialization', version: '2.2.0']
+Resolved plugin [id: 'com.google.devtools.ksp', version: '2.2.0-2.0.2']
+Resolved plugin [id: 'org.jetbrains.kotlin.plugin.compose', version: '2.2.0']
+Resolved plugin [id: 'com.google.gms.google-services', version: '4.4.2']
+Using default execution profile
+Using Kotlin Gradle Plugin gradle813 variant
+Parsed shrinker version: 8.5.10
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+Detected Android Gradle Plugin compose compiler configuration
+All projects evaluated.
+Task path ':agent-core:compileDebugKotlinAndroid' matched project ':agent-core'
+Task name matched 'compileDebugKotlinAndroid'
+Selected primary task 'compileDebugKotlinAndroid' from project :agent-core
+Tasks to be executed: [task ':agent-core:checkKotlinGradlePluginConfigurationErrors', task ':agent-core:preBuild', task ':agent-core:preDebugBuild', task ':agent-core:generateDebugResValues', task ':agent-core:generateDebugResources', task ':agent-core:packageDebugResources', task ':agent-core:parseDebugLocalResources', task ':agent-core:generateDebugRFile', task ':agent-core:compileDebugKotlinAndroid']
+Tasks that were excluded: []
+Resolve mutations for :agent-core:checkKotlinGradlePluginConfigurationErrors (Thread[#1246,Execution worker,5,main]) started.
+:agent-core:checkKotlinGradlePluginConfigurationErrors (Thread[#1246,Execution worker,5,main]) started.
+
+> Task :agent-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+Skipping task ':agent-core:checkKotlinGradlePluginConfigurationErrors' as task onlyIf 'errorDiagnostics are present' is false.
+Resolve mutations for :agent-core:preBuild (Thread[#1246,Execution worker,5,main]) started.
+:agent-core:preBuild (Thread[#1246,Execution worker,5,main]) started.
+
+> Task :agent-core:preBuild UP-TO-DATE
+Skipping task ':agent-core:preBuild' as it has no actions.
+Resolve mutations for :agent-core:preDebugBuild (Thread[#1246,Execution worker,5,main]) started.
+:agent-core:preDebugBuild (Thread[#1246,Execution worker,5,main]) started.
+
+> Task :agent-core:preDebugBuild UP-TO-DATE
+Skipping task ':agent-core:preDebugBuild' as it has no actions.
+Resolve mutations for :agent-core:generateDebugResValues (Thread[#1246,Execution worker,5,main]) started.
+:agent-core:generateDebugResValues (Thread[#1246,Execution worker,5,main]) started.
+
+> Task :agent-core:generateDebugResValues UP-TO-DATE
+Caching disabled for task ':agent-core:generateDebugResValues' because:
+  Build cache is disabled
+Skipping task ':agent-core:generateDebugResValues' as it is up-to-date.
+Resolve mutations for :agent-core:generateDebugResources (Thread[#1246,Execution worker,5,main]) started.
+:agent-core:generateDebugResources (Thread[#1251,Execution worker Thread 6,5,main]) started.
+
+> Task :agent-core:generateDebugResources UP-TO-DATE
+Caching disabled for task ':agent-core:generateDebugResources' because:
+  Build cache is disabled
+Skipping task ':agent-core:generateDebugResources' as it is up-to-date.
+Resolve mutations for :agent-core:packageDebugResources (Thread[#1251,Execution worker Thread 6,5,main]) started.
+:agent-core:packageDebugResources (Thread[#1251,Execution worker Thread 6,5,main]) started.
+
+> Task :agent-core:packageDebugResources UP-TO-DATE
+Caching disabled for task ':agent-core:packageDebugResources' because:
+  Build cache is disabled
+Skipping task ':agent-core:packageDebugResources' as it is up-to-date.
+Resolve mutations for :agent-core:parseDebugLocalResources (Thread[#1251,Execution worker Thread 6,5,main]) started.
+:agent-core:parseDebugLocalResources (Thread[#1251,Execution worker Thread 6,5,main]) started.
+
+> Task :agent-core:parseDebugLocalResources UP-TO-DATE
+Caching disabled for task ':agent-core:parseDebugLocalResources' because:
+  Build cache is disabled
+Skipping task ':agent-core:parseDebugLocalResources' as it is up-to-date.
+Resolve mutations for :agent-core:generateDebugRFile (Thread[#1251,Execution worker Thread 6,5,main]) started.
+:agent-core:generateDebugRFile (Thread[#1251,Execution worker Thread 6,5,main]) started.
+
+> Task :agent-core:generateDebugRFile UP-TO-DATE
+Caching disabled for task ':agent-core:generateDebugRFile' because:
+  Build cache is disabled
+Skipping task ':agent-core:generateDebugRFile' as it is up-to-date.
+Resolve mutations for :agent-core:compileDebugKotlinAndroid (Thread[#1251,Execution worker Thread 6,5,main]) started.
+:agent-core:compileDebugKotlinAndroid (Thread[#1251,Execution worker Thread 6,5,main]) started.
+
+> Task :agent-core:compileDebugKotlinAndroid
+Caching disabled for task ':agent-core:compileDebugKotlinAndroid' because:
+  Build cache is disabled
+Task ':agent-core:compileDebugKotlinAndroid' is not up-to-date because:
+  Input property 'classpathSnapshotProperties.classpathSnapshot' file C:\Users\Veldrine\.gradle\caches\9.4.1\transforms\07b50fa2707425df48f62a15711d1e19\transformed\google-client-runtime_jar-snapshot.bin has been added.
+  Input property 'classpathSnapshotProperties.classpathSnapshot' file C:\Users\Veldrine\.gradle\caches\9.4.1\transforms\8dd401c9705bac9642b11a0bf92534f0\transformed\ktor-client-logging-jvm-3_3_3_jar-snapshot.bin has been removed.
+  Input property 'classpathSnapshotProperties.classpathSnapshot' file C:\Users\Veldrine\.gradle\caches\9.4.1\transforms\bfff52b4199d8c7210d18adc6c0dd706\transformed\prompt-executor-google-client-release-api_jar-snapshot.bin has been added.
+  and more...
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\androidDebug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\commonMain\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\androidDebug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\commonMain\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\androidDebug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\commonMain\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\androidDebug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\commonMain\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\androidDebug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\commonMain\kotlin', not found
+Kotlin source files: C:\Users\Veldrine\Projects\androclaw\agent-core\src\androidMain\kotlin\ai\androclaw\agent\OpenClawAgent.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\agent\memory\OpenClawMemoryStore.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\agent\OpenClawConfig.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\agent\skills\SkillRegistry.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\mcp\McpClientManager.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\calendar\CalendarTools.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\email\EmailTools.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\memory\MemoryTools.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\messaging\TelegramTools.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\messaging\WhatsAppTools.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\mpesa\MpesaSecurityCredential.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\mpesa\MpesaTools.kt, C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\kotlin\ai\androclaw\tools\telephony\TelephonyTools.kt
+Java source files: 
+Script source files: 
+Script file extensions: 
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\androidDebug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\kotlin', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\main\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\debug\java', not found
+file or directory 'C:\Users\Veldrine\Projects\androclaw\agent-core\src\commonMain\kotlin', not found
+Using Kotlin/JVM incremental compilation
+[KOTLIN] Kotlin compilation 'jdkHome' argument: C:\Program Files\RedHat\java-21-openjdk-21.0.10.0.7-1
+Options for KOTLIN DAEMON: IncrementalCompilationOptions(super=CompilationOptions(compilerMode=INCREMENTAL_COMPILER, targetPlatform=JVM, reportCategories=[0, 3], reportSeverity=2, requestedCompilationResults=[0], kotlinScriptExtensions=[]), sourceChanges=org.jetbrains.kotlin.buildtools.api.SourcesChanges$Known@28a98d24, classpathChanges=ToBeComputedByIncrementalCompiler, workingDir=C:\Users\Veldrine\Projects\androclaw\agent-core\build\kotlin\compileDebugKotlinAndroid\cacheable, multiModuleICSettings=MultiModuleICSettings(buildHistoryFile=C:\Users\Veldrine\Projects\androclaw\agent-core\build\kotlin\compileDebugKotlinAndroid\local-state\build-history.bin, useModuleDetection=true), icFeatures=IncrementalCompilationFeatures(usePreciseJavaTracking=true, withAbiSnapshot=false, preciseCompilationResultsBackup=true, keepIncrementalCompilationCachesInMemory=true, enableUnsafeIncrementalCompilationForMultiplatform=false, enableMonotonousIncrementalCompileSetExpansion=true), outputFiles=[C:\Users\Veldrine\Projects\androclaw\agent-core\build\tmp\kotlin-classes\debug, C:\Users\Veldrine\Projects\androclaw\agent-core\build\kotlin\compileDebugKotlinAndroid\cacheable, C:\Users\Veldrine\Projects\androclaw\agent-core\build\kotlin\compileDebugKotlinAndroid\local-state])
+Finished executing kotlin compiler using DAEMON strategy
+Restoring task outputs to pre-compilation state
+
+> Task :agent-core:compileDebugKotlinAndroid FAILED
+Build c27c1266-7d1f-4cd2-83ba-151ce166904e is closed
+
+[Incubating] Problems report is available at: file:///C:/Users/Veldrine/Projects/androclaw/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.4.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+6 actionable tasks: 1 executed, 5 up-to-date
+Watched directory hierarchies: [C:\Users\Veldrine\Projects\androclaw]

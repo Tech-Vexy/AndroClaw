@@ -1,0 +1,13 @@
+fastapi>=0.100.0
+uvicorn>=0.20.0
+telethon>=1.30.0
+google-auth>=2.20.0
+google-auth-oauthlib>=1.0.0
+google-api-python-client>=2.90.0
+httpx>=0.24.0
+mcp>=0.1.0
+PyJWT>=2.8.0
+firebase-admin>=6.2.0
+google-cloud-firestore>=2.11.0
+python-dotenv>=1.0.0
+

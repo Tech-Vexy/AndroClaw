@@ -1,0 +1,121 @@
+[versions]
+# Kotlin & build
+kotlin                  = "2.2.0"
+ksp                     = "2.2.0-2.0.2"
+agp                     = "8.5.0"
+
+# Koog
+koog                    = "1.0.0"
+koog-beta               = "1.0.0-beta"
+
+# AndroidX / Compose
+compose-bom             = "2024.09.00"
+activity-compose        = "1.9.2"
+lifecycle               = "2.8.6"
+navigation-compose      = "2.8.2"
+room                    = "2.6.1"
+datastore               = "1.1.1"
+security-crypto         = "1.1.0-alpha06"   # EncryptedSharedPreferences + MasterKey
+work-runtime            = "2.9.1"
+
+# Networking
+ktor                    = "3.0.0"
+kotlinx-serialization   = "1.7.3"
+kotlinx-coroutines      = "1.9.0"
+
+# Audio / Voice
+deepgram-sdk            = "3.5.0"        # JVM SDK — wrap via OkHttp WebSocket on Android
+
+# Observability
+opentelemetry           = "1.42.1"
+
+# DI
+koin                    = "3.5.6"
+
+# Misc
+timber                  = "5.0.1"
+
+# Google Auth
+google-services-auth     = "21.2.0"
+
+# Firebase
+firebase-bom            = "33.5.1"
+
+[libraries]
+# Koog core (stable)
+koog-agents             = { module = "ai.koog:koog-agents",              version.ref = "koog" }
+# Koog additions (beta) — MCP, A2A, long-term memory, RAG
+koog-additions          = { module = "ai.koog:koog-agents-additions",   version.ref = "koog-beta" }
+# Koog Google/Gemini extension
+koog-ext-google         = { module = "ai.koog:prompt-executor-google-client", version.ref = "koog-beta" }
+
+# Compose BOM
+compose-bom             = { module = "androidx.compose:compose-bom",    version.ref = "compose-bom" }
+compose-ui              = { module = "androidx.compose.ui:ui" }
+compose-ui-tooling      = { module = "androidx.compose.ui:ui-tooling" }
+compose-ui-tooling-prev = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose-material3       = { module = "androidx.compose.material3:material3" }
+compose-icons           = { module = "androidx.compose.material:material-icons-extended" }
+activity-compose        = { module = "androidx.activity:activity-compose",         version.ref = "activity-compose" }
+appcompat               = { module = "androidx.appcompat:appcompat",               version = "1.7.0" }
+navigation-compose      = { module = "androidx.navigation:navigation-compose",     version.ref = "navigation-compose" }
+
+# Lifecycle
+lifecycle-viewmodel     = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+lifecycle-runtime       = { module = "androidx.lifecycle:lifecycle-runtime-compose",   version.ref = "lifecycle" }
+
+# Room
+room-runtime            = { module = "androidx.room:room-runtime",       version.ref = "room" }
+room-ktx                = { module = "androidx.room:room-ktx",           version.ref = "room" }
+room-compiler           = { module = "androidx.room:room-compiler",      version.ref = "room" }  # ksp
+
+# DataStore
+datastore-prefs         = { module = "androidx.datastore:datastore-preferences", version.ref = "datastore" }
+security-crypto         = { module = "androidx.security:security-crypto",        version.ref = "security-crypto" }
+
+# WorkManager
+work-runtime            = { module = "androidx.work:work-runtime-ktx",   version.ref = "work-runtime" }
+
+# Ktor (HTTP client for MCP SSE, Daraja, Deepgram, Vonage)
+ktor-client-core        = { module = "io.ktor:ktor-client-core",         version.ref = "ktor" }
+ktor-client-okhttp      = { module = "io.ktor:ktor-client-okhttp",       version.ref = "ktor" }
+ktor-client-content     = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor-serialization-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-client-logging     = { module = "io.ktor:ktor-client-logging",      version.ref = "ktor" }
+ktor-client-websockets  = { module = "io.ktor:ktor-client-websockets",   version.ref = "ktor" }
+
+# Serialization & coroutines
+kotlinx-serialization   = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+
+# Koin DI
+koin-android            = { module = "io.insert-koin:koin-android",      version.ref = "koin" }
+koin-compose            = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+
+# Observability
+opentelemetry-sdk       = { module = "io.opentelemetry:opentelemetry-sdk", version.ref = "opentelemetry" }
+
+# Logging
+timber                  = { module = "com.jakewharton.timber:timber",    version.ref = "timber" }
+
+# Google Auth
+google-auth             = { module = "com.google.android.gms:play-services-auth", version.ref = "google-services-auth" }
+google-auth-util        = { module = "com.google.android.gms:play-services-auth-api-phone", version = "18.1.0" }
+
+# Firebase
+firebase-bom            = { module = "com.google.firebase:firebase-bom",   version.ref = "firebase-bom" }
+firebase-fcm            = { module = "com.google.firebase:firebase-messaging-ktx" }
+firebase-firestore      = { module = "com.google.firebase:firebase-firestore-ktx" }
+firebase-auth           = { module = "com.google.firebase:firebase-auth-ktx" }
+
+[plugins]
+android-application     = { id = "com.android.application",             version.ref = "agp" }
+android-library         = { id = "com.android.library",                 version.ref = "agp" }
+kotlin-android          = { id = "org.jetbrains.kotlin.android",        version.ref = "kotlin" }
+kotlin-multiplatform    = { id = "org.jetbrains.kotlin.multiplatform",  version.ref = "kotlin" }
+kotlin-serialization    = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp                     = { id = "com.google.devtools.ksp",             version.ref = "ksp" }
+kotlin-compose          = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+google-services         = { id = "com.google.gms.google-services",      version = "4.4.2" }
+
+

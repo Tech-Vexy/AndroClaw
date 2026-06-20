@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Accessibility Service configuration.
+  Grants OpenClaw the ability to read on-screen content and interact
+  with other apps on the user's behalf.
+
+  accessibilityEventTypes: which events to receive
+  accessibilityFlags:      behaviour flags
+  accessibilityFeedbackType: how we "respond" (we use generic/spoken)
+  notificationTimeout:     min ms between events
+  canRetrieveWindowContent: true = can read full view hierarchy
+  canPerformGestures:       true = can tap/swipe on behalf of user
+  canRequestFilterKeyEvents: true = can intercept key events (for hotword)
+-->
+<accessibility-service
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="
+        typeWindowContentChanged|
+        typeWindowStateChanged|
+        typeViewClicked|
+        typeViewFocused|
+        typeViewTextChanged|
+        typeNotificationStateChanged|
+        typeViewScrolled"
+    android:accessibilityFlags="
+        flagReportViewIds|
+        flagRetrieveInteractiveWindows|
+        flagRequestFilterKeyEvents"
+    android:accessibilityFeedbackType="feedbackGeneric|feedbackSpoken"
+    android:notificationTimeout="100"
+    android:canRetrieveWindowContent="true"
+    android:canPerformGestures="true"
+    android:canRequestFilterKeyEvents="true"
+    android:description="@string/accessibility_service_description"
+    android:settingsActivity="ai.androclaw.MainActivity" />
+

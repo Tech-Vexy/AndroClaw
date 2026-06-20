@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Device Admin policy declarations.
+  Shown to the user in the system "Activate device administrator" dialog.
+  Only request policies you actually use — requesting unused policies
+  triggers Play Store review and user distrust.
+-->
+<device-admin xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-policies>
+        <!-- Lock screen immediately on command -->
+        <force-lock />
+
+        <!-- Remote wipe (requires explicit user confirmation in agent) -->
+        <wipe-data />
+
+        <!-- Password policy enforcement -->
+        <limit-password />
+        <watch-login />
+
+        <!-- Disable camera -->
+        <disable-camera />
+
+        <!-- Disable keyguard features / screen capture -->
+        <disable-keyguard-features />
+
+        <!-- Prevent uninstall while admin is active -->
+        <!-- (implicit — any active device admin blocks uninstall) -->
+    </uses-policies>
+</device-admin>
+

@@ -1,0 +1,65 @@
+## OpenClaw — local.properties template
+## Copy this file to local.properties and fill in your values.
+## local.properties is gitignored — never commit API keys.
+
+# Android SDK path (set by Android Studio automatically)
+sdk.dir=/Users/YOUR_USERNAME/Library/Android/sdk
+
+# ── LLM ──────────────────────────────────────────────────────────────────────
+GOOGLE_GENAI_API_KEY=REPLACE_ME
+
+# ── Voice ─────────────────────────────────────────────────────────────────────
+DEEPGRAM_API_KEY=REPLACE_ME
+CARTESIA_API_KEY=REPLACE_ME
+
+# ── WhatsApp (Vonage Messages API) ─────────────────────────────────────────────────
+VONAGE_MSG_API_KEY=REPLACE_ME
+VONAGE_MSG_API_SECRET=REPLACE_ME
+# Sandbox sender number (use 14157386102 for sandbox, your approved number for production)
+VONAGE_MSG_FROM_NUMBER=14157386102
+
+# ── AgentPhone (hosted phone number — 26 MCP tools) ──────────────────────────
+# Get key at https://agentphone.ai/settings
+AGENTPHONE_API_KEY=ap_live_REPLACE_ME
+
+# ── Google OAuth (from Google Cloud Console → Credentials → OAuth 2.0 Client ID) ─
+# Create an Android OAuth client ID for package ai.openclaw
+# Also add the SHA-1 of your debug keystore in the Cloud Console
+GOOGLE_OAUTH_CLIENT_ID=REPLACE_ME.apps.googleusercontent.com
+
+# ── Google Workspace (Gmail + Calendar + Drive MCP) ──────────────────────────
+# Obtain via Android AccountManager / Google Sign-In at runtime
+# Paste a temporary token here for initial testing
+GOOGLE_OAUTH_TOKEN=ya29.REPLACE_ME
+
+# ── GitHub ────────────────────────────────────────────────────────────────────
+# https://github.com/settings/tokens — scopes: repo, issues, notifications, read:user
+GITHUB_PAT=ghp_REPLACE_ME
+
+# ── Slack ─────────────────────────────────────────────────────────────────────
+# Create app at https://api.slack.com/apps — scopes: channels:read, channels:history,
+# chat:write, users:read, search:read, dm:read, dm:write
+SLACK_BOT_TOKEN=xoxb-REPLACE_ME
+
+# ── Linear ────────────────────────────────────────────────────────────────────
+# https://linear.app/settings/api
+LINEAR_API_KEY=lin_api_REPLACE_ME
+
+# ── Notion ────────────────────────────────────────────────────────────────────
+# https://www.notion.so/profile/integrations
+NOTION_TOKEN=secret_REPLACE_ME
+
+# ── M-Pesa (Daraja) ───────────────────────────────────────────────────────────
+MPESA_CONSUMER_KEY=REPLACE_ME
+MPESA_CONSUMER_SECRET=REPLACE_ME
+MPESA_SHORTCODE=174379
+MPESA_PASSKEY=REPLACE_ME
+
+# ── Gateway (Render) ──────────────────────────────────────────────────────────
+# Set to your deployed Render URL after setting up the blueprint (render.yaml)
+GATEWAY_BASE_URL_DEBUG=https://your-dev-gateway.onrender.com
+GATEWAY_BASE_URL_RELEASE=https://your-gateway.onrender.com
+
+# Render Deploy Hook URL (for gateway/deploy.sh)
+RENDER_DEPLOY_HOOK_URL=https://api.render.com/deploy/srv-xxxxxx?key=yyyyyy
+

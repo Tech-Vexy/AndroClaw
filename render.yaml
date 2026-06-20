@@ -1,0 +1,70 @@
+# Androclaw Gateway — Render Blueprint
+# https://render.com/docs/blueprint-spec
+#
+# First-time deploy:
+#   1. Push this repo to GitHub
+#   2. Go to Render Dashboard → Blueprints → New Blueprint
+#   3. Connect your repo — Render will read this file and create all services
+#   4. Set secret env vars in each service's Environment tab (marked sync: false below)
+#
+# Subsequent deploys: push to main branch (auto-deploy enabled) or manual deploy via Render dashboard
+
+services:
+
+  # ── Unified Gateway ───────────────────────────────────────────────────────────
+  - type: web
+    name: androclaw-gateway
+    runtime: docker
+    dockerfilePath: ./gateway/unified/Dockerfile
+    dockerContext: ./gateway/unified
+    plan: starter
+    region: oregon
+    envVars:
+      - key: PORT
+        value: "8080"
+      - key: BRIDGE_SECRET
+        sync: false
+      - key: GMAIL_ACCESS_TOKEN
+        sync: false
+      - key: GMAIL_REFRESH_TOKEN
+        sync: false
+      - key: GMAIL_CLIENT_ID
+        sync: false
+      - key: GMAIL_CLIENT_SECRET
+        sync: false
+      - key: MPESA_CONSUMER_KEY
+        sync: false
+      - key: MPESA_CONSUMER_SECRET
+        sync: false
+      - key: MPESA_SHORTCODE
+        sync: false
+      - key: MPESA_PASSKEY
+        sync: false
+      - key: MPESA_CALLBACK_BASE_URL
+        sync: false
+      - key: MPESA_ENV
+        value: "sandbox"
+      - key: VONAGE_API_KEY
+        sync: false
+      - key: VONAGE_API_SECRET
+        sync: false
+      - key: VONAGE_APP_ID
+        sync: false
+      - key: VONAGE_PRIVATE_KEY
+        sync: false
+      - key: VONAGE_FROM_NUMBER
+        sync: false
+      - key: TG_API_ID
+        sync: false
+      - key: TG_API_HASH
+        sync: false
+      - key: TG_SESSION_STRING
+        sync: false
+      - key: GOOGLE_GENAI_API_KEY
+        sync: false
+      - key: AGENTPHONE_API_KEY
+        sync: false
+      - key: FIREBASE_PROJECT_ID
+        sync: false
+      - key: DEVICE_ID
+        value: "default"
