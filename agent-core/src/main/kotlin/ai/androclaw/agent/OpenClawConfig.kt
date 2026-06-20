@@ -25,14 +25,8 @@ data class OpenClawConfig(
     // GitHub
     val githubPat: String           = "",
 
-    // Slack
-    val slackBotToken: String       = "",     // xoxb-...
-
     // Linear
     val linearApiKey: String        = "",     // lin_api_...
-
-    // Notion
-    val notionToken: String         = "",     // secret_...
 
     // Telephony (AgentPhone — via MCP)
     // No local credentials needed; handled entirely by AgentPhone MCP.
@@ -43,10 +37,6 @@ data class OpenClawConfig(
     val vonageMsgFromNumber: String = "",  // Vonage sandbox: 14157386102
     val vonageMsgSandbox: Boolean   = true,
 
-    // Telegram (user account — MTProto bridge)
-    val telegramApiId: Int          = 0,
-    val telegramApiHash: String     = "",
-    val telegramSessionPath: String = "",
 
     // M-Pesa (Daraja)
     val mpesaConsumerKey: String    = "",
@@ -70,13 +60,10 @@ data class OpenClawConfig(
     val hasAgentPhone: Boolean get() = agentPhoneApiKey.isNotBlank()
     val hasGoogle: Boolean    get() = googleOAuthToken.isNotBlank()
     val hasGitHub: Boolean    get() = githubPat.isNotBlank()
-    val hasSlack: Boolean     get() = slackBotToken.isNotBlank()
     val hasLinear: Boolean    get() = linearApiKey.isNotBlank()
-    val hasNotion: Boolean    get() = notionToken.isNotBlank()
     val hasMpesa: Boolean     get() = mpesaConsumerKey.isNotBlank()
     val hasGateway: Boolean   get() = gatewayBaseUrl.startsWith("https://")
     val hasWhatsApp: Boolean  get() = vonageMsgApiKey.isNotBlank() && vonageMsgApiSecret.isNotBlank()
-    val hasTelegram: Boolean  get() = telegramApiId != 0 && telegramApiHash.isNotBlank()
     val hasGoogleGenAi: Boolean get() = googleGenAiApiKey.isNotBlank()
 }
 

@@ -16,11 +16,8 @@ enum class OnboardingStep {
     VOICE,
     GOOGLE,
     GITHUB,
-    SLACK,
     LINEAR,
-    NOTION,
     WHATSAPP,
-    TELEGRAM,
     MPESA,
     GATEWAY,
     DONE,
@@ -46,17 +43,12 @@ data class OnboardingState(
     val googleOAuthToken: String    = "",
 
     val githubPat: String           = "",
-    val slackBotToken: String       = "",
     val linearApiKey: String        = "",
-    val notionToken: String         = "",
 
     val vonageMsgApiKey: String   = "",
     val vonageMsgApiSecret: String = "",
     val vonageMsgFromNumber: String = "",
     val vonageMsgSandbox: Boolean  = true,
-
-    val telegramApiId: String       = "",
-    val telegramApiHash: String     = "",
 
     val mpesaConsumerKey: String    = "",
     val mpesaConsumerSecret: String = "",
@@ -84,9 +76,7 @@ class OnboardingViewModel(
 
     fun setGoogleOAuthToken(v: String) = update { copy(googleOAuthToken = v) }
     fun setGithubPat(v: String)        = update { copy(githubPat = v) }
-    fun setSlackBotToken(v: String)    = update { copy(slackBotToken = v) }
     fun setLinearApiKey(v: String)     = update { copy(linearApiKey = v) }
-    fun setNotionToken(v: String)      = update { copy(notionToken = v) }
     fun setUserName(v: String)         = update { copy(userName = v) }
     fun setLanguage(v: String)          = update { copy(language = v) }
     fun setGoogleGenAiKey(v: String)    = update { copy(googleGenAiKey = v) }
@@ -98,8 +88,6 @@ class OnboardingViewModel(
     fun setVonageMsgApiSecret(v: String) = update { copy(vonageMsgApiSecret = v) }
     fun setVonageMsgFromNumber(v: String) = update { copy(vonageMsgFromNumber = v) }
     fun setVonageMsgSandbox(v: Boolean)  = update { copy(vonageMsgSandbox = v) }
-    fun setTelegramApiId(v: String)     = update { copy(telegramApiId = v) }
-    fun setTelegramApiHash(v: String)   = update { copy(telegramApiHash = v) }
     fun setMpesaConsumerKey(v: String)  = update { copy(mpesaConsumerKey = v) }
     fun setMpesaConsumerSecret(v: String) = update { copy(mpesaConsumerSecret = v) }
     fun setMpesaShortcode(v: String)    = update { copy(mpesaShortcode = v) }
@@ -142,7 +130,6 @@ class OnboardingViewModel(
                 set(ConfigStore.VOICE_AUTO_SPEAK,   s.autoSpeak)
                 set(ConfigStore.VONAGE_MSG_FROM,   s.vonageMsgFromNumber)
                 set(ConfigStore.VONAGE_MSG_SANDBOX, s.vonageMsgSandbox)
-                s.telegramApiId.toIntOrNull()?.let { set(ConfigStore.TELEGRAM_API_ID, it) }
                 set(ConfigStore.MPESA_SHORTCODE,    s.mpesaShortcode)
                 set(ConfigStore.MPESA_CALLBACK_URL, s.mpesaCallbackUrl)
                 set(ConfigStore.MPESA_ENV,          s.mpesaEnv)
@@ -155,12 +142,9 @@ class OnboardingViewModel(
                 setCartesiaApiKey(s.cartesiaKey)
                 setGoogleOAuthToken(s.googleOAuthToken)
                 setGithubPat(s.githubPat)
-                setSlackBotToken(s.slackBotToken)
                 setLinearApiKey(s.linearApiKey)
-                setNotionToken(s.notionToken)
                 setVonageMsgApiKey(s.vonageMsgApiKey)
                 setVonageMsgApiSecret(s.vonageMsgApiSecret)
-                setTelegramApiHash(s.telegramApiHash)
                 setMpesaConsumerKey(s.mpesaConsumerKey)
                 setMpesaConsumerSecret(s.mpesaConsumerSecret)
                 setMpesaPasskey(s.mpesaPasskey)
@@ -187,19 +171,13 @@ class OnboardingViewModel(
                     ConfigStore.SecretKeys.CARTESIA_API_KEY to s.cartesiaKey,
                     ConfigStore.SecretKeys.GOOGLE_OAUTH_TOKEN to s.googleOAuthToken,
                     ConfigStore.SecretKeys.GITHUB_PAT to s.githubPat,
-                    ConfigStore.SecretKeys.SLACK_BOT_TOKEN to s.slackBotToken,
                     ConfigStore.SecretKeys.LINEAR_API_KEY to s.linearApiKey,
-                    ConfigStore.SecretKeys.NOTION_TOKEN to s.notionToken,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_KEY to s.vonageMsgApiKey,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_SECRET to s.vonageMsgApiSecret,
-                    ConfigStore.SecretKeys.TELEGRAM_API_HASH to s.telegramApiHash,
                     ConfigStore.SecretKeys.MPESA_CONSUMER_KEY to s.mpesaConsumerKey,
                     ConfigStore.SecretKeys.MPESA_CONSUMER_SECRET to s.mpesaConsumerSecret,
                     ConfigStore.SecretKeys.MPESA_PASSKEY to s.mpesaPasskey
                 )
-                s.telegramApiId.toIntOrNull()?.let {
-                    configMap[ConfigStore.TELEGRAM_API_ID.name] = it
-                }
                 firestoreManager.saveUserConfig(currentUser.uid, configMap)
             }
 
@@ -225,11 +203,8 @@ class OnboardingViewModel(
             OnboardingStep.AGENTPHONE,
             OnboardingStep.GOOGLE,
             OnboardingStep.GITHUB,
-            OnboardingStep.SLACK,
             OnboardingStep.LINEAR,
-            OnboardingStep.NOTION,
             OnboardingStep.WHATSAPP,
-            OnboardingStep.TELEGRAM,
             OnboardingStep.MPESA      -> true
             OnboardingStep.DONE       -> true
         }

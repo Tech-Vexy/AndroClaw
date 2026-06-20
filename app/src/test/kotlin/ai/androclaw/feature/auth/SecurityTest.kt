@@ -12,9 +12,9 @@ class SecurityTest {
 
     @Test fun `all secret keys are distinct`() {
         val keys = listOf("anthropic_api_key","agentphone_api_key","deepgram_api_key",
-            "cartesia_api_key","google_oauth_token","github_pat","slack_bot_token",
-            "linear_api_key","notion_token","vonage_api_key","vonage_api_secret",
-            "vonage_private_key","whatsapp_token","telegram_api_hash",
+            "cartesia_api_key","google_oauth_token","github_pat",
+            "linear_api_key","vonage_api_key","vonage_api_secret",
+            "vonage_private_key","whatsapp_token",
             "mpesa_consumer_key","mpesa_consumer_secret","mpesa_passkey","bridge_secret")
         assertEquals(keys.size, keys.toSet().size)
     }

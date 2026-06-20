@@ -163,12 +163,9 @@ class AuthViewModel(
                         "cartesia_api_key" -> configStore.setCartesiaApiKey(value)
                         "google_oauth_token" -> configStore.setGoogleOAuthToken(value)
                         "github_pat" -> configStore.setGithubPat(value)
-                        "slack_bot_token" -> configStore.setSlackBotToken(value)
                         "linear_api_key" -> configStore.setLinearApiKey(value)
-                        "notion_token" -> configStore.setNotionToken(value)
                         "vonage_msg_api_key" -> configStore.setVonageMsgApiKey(value)
                         "vonage_msg_api_secret" -> configStore.setVonageMsgApiSecret(value)
-                        "telegram_api_hash" -> configStore.setTelegramApiHash(value)
                         "mpesa_consumer_key" -> configStore.setMpesaConsumerKey(value)
                         "mpesa_consumer_secret" -> configStore.setMpesaConsumerSecret(value)
                         "mpesa_passkey" -> configStore.setMpesaPasskey(value)
@@ -177,10 +174,6 @@ class AuthViewModel(
                     when (key) {
                         "voice_auto_speak" -> configStore.set(ConfigStore.VOICE_AUTO_SPEAK, value)
                         "vonage_msg_sandbox" -> configStore.set(ConfigStore.VONAGE_MSG_SANDBOX, value)
-                    }
-                } else if (value is Int) {
-                    when (key) {
-                        "telegram_api_id" -> configStore.set(ConfigStore.TELEGRAM_API_ID, value)
                     }
                 }
             }

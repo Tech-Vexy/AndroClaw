@@ -85,11 +85,8 @@ fun OnboardingScreen(
                         OnboardingStep.VOICE        -> VoiceStep(state, vm)
                         OnboardingStep.GOOGLE       -> GoogleStep(state, vm)
                         OnboardingStep.GITHUB       -> GitHubStep(state, vm)
-                        OnboardingStep.SLACK        -> SlackStep(state, vm)
                         OnboardingStep.LINEAR       -> LinearStep(state, vm)
-                        OnboardingStep.NOTION       -> NotionStep(state, vm)
                         OnboardingStep.WHATSAPP     -> WhatsAppStep(state, vm)
-                        OnboardingStep.TELEGRAM     -> TelegramStep(state, vm)
                         OnboardingStep.MPESA        -> MpesaStep(state, vm)
                         OnboardingStep.GATEWAY      -> GatewayStep(state, vm)
                         OnboardingStep.DONE         -> {}
@@ -295,37 +292,7 @@ fun WhatsAppStep(state: OnboardingState, vm: OnboardingViewModel) {
     }
 }
 
-// ── Step: Telegram ────────────────────────────────────────────────────────────
 
-@Composable
-fun TelegramStep(state: OnboardingState, vm: OnboardingViewModel) {
-    StepScaffold(
-        icon        = Icons.Default.Send,
-        title       = "Telegram",
-        description = "Connects to your Telegram account (not a bot) via the gateway. Get credentials from my.telegram.org.",
-        helpUrl     = "https://my.telegram.org/apps",
-        helpLabel   = "Get API credentials →",
-        isOptional  = true,
-    ) {
-        ConfigTextField(
-            value         = state.telegramApiId,
-            onValueChange = vm::setTelegramApiId,
-            label         = "API ID",
-            placeholder   = "12345678",
-            leadingIcon   = Icons.Default.Numbers,
-            keyboardType  = KeyboardType.Number,
-        )
-        Spacer(Modifier.height(10.dp))
-        SecretTextField(state.telegramApiHash, vm::setTelegramApiHash, "API Hash", Icons.Default.Tag)
-
-        Spacer(Modifier.height(12.dp))
-        InfoCard(
-            icon    = Icons.Default.Info,
-            message = "After deploying the gateway, run auth_session.py once to generate the session string, then add it to Render as the TG_SESSION_STRING environment variable.",
-            color   = ClawBlue.copy(alpha = 0.15f),
-        )
-    }
-}
 
 // ── Step: M-Pesa ─────────────────────────────────────────────────────────────
 
@@ -401,7 +368,7 @@ fun GatewayStep(state: OnboardingState, vm: OnboardingViewModel) {
         Spacer(Modifier.height(12.dp))
         InfoCard(
             icon    = Icons.Default.Check,
-            message = "The gateway hosts your Telegram bridge, email proxy, and Vonage MCP server.",
+            message = "The gateway hosts your email proxy and Vonage MCP server.",
             color   = SuccessGreen.copy(alpha = 0.12f),
         )
     }
@@ -414,10 +381,10 @@ fun BottomNavBar(state: OnboardingState, vm: OnboardingViewModel) {
     val isOptional = state.step in listOf(
         OnboardingStep.AGENTPHONE,
         OnboardingStep.GOOGLE,
-        OnboardingStep.GITHUB,  OnboardingStep.SLACK,
-        OnboardingStep.LINEAR,  OnboardingStep.NOTION,
+        OnboardingStep.GITHUB,
+        OnboardingStep.LINEAR,
         OnboardingStep.WHATSAPP,
-        OnboardingStep.TELEGRAM,  OnboardingStep.MPESA,
+        OnboardingStep.MPESA,
     )
     val isLast = state.step == OnboardingStep.GATEWAY
 
@@ -705,34 +672,7 @@ fun GitHubStep(state: OnboardingState, vm: OnboardingViewModel) {
     }
 }
 
-// ── Step: Slack ───────────────────────────────────────────────────────────────
 
-@Composable
-fun SlackStep(state: OnboardingState, vm: OnboardingViewModel) {
-    StepScaffold(
-        icon        = Icons.Default.Forum,
-        title       = "Slack",
-        description = "Read and send Slack messages, search channels, and manage DMs via Slack's official MCP server.",
-        helpUrl     = "https://api.slack.com/apps",
-        helpLabel   = "Create Slack App →",
-        isOptional  = true,
-    ) {
-        SecretTextField(
-            value         = state.slackBotToken,
-            onValueChange = vm::setSlackBotToken,
-            label         = "Slack Bot Token",
-            placeholder   = "xoxb-...",
-            leadingIcon   = Icons.Default.VpnKey,
-            isValid       = state.slackBotToken.startsWith("xoxb-") || state.slackBotToken.startsWith("xoxp-"),
-        )
-        Spacer(Modifier.height(12.dp))
-        InfoCard(
-            icon    = Icons.Default.Info,
-            message = "Create a Slack App, add OAuth scopes (channels:read, channels:history, chat:write, users:read, search:read), install to workspace, copy the Bot OAuth Token.",
-            color   = SurfaceColor,
-        )
-    }
-}
 
 // ── Step: Linear ──────────────────────────────────────────────────────────────
 
@@ -763,34 +703,7 @@ fun LinearStep(state: OnboardingState, vm: OnboardingViewModel) {
     }
 }
 
-// ── Step: Notion ──────────────────────────────────────────────────────────────
 
-@Composable
-fun NotionStep(state: OnboardingState, vm: OnboardingViewModel) {
-    StepScaffold(
-        icon        = Icons.Default.Article,
-        title       = "Notion",
-        description = "Read and write Notion pages, databases, and comments via Notion's official remote MCP server.",
-        helpUrl     = "https://www.notion.so/profile/integrations",
-        helpLabel   = "Create Notion integration →",
-        isOptional  = true,
-    ) {
-        SecretTextField(
-            value         = state.notionToken,
-            onValueChange = vm::setNotionToken,
-            label         = "Notion Integration Token",
-            placeholder   = "secret_...",
-            leadingIcon   = Icons.Default.VpnKey,
-            isValid       = state.notionToken.startsWith("secret_") || state.notionToken.startsWith("ntn_"),
-        )
-        Spacer(Modifier.height(12.dp))
-        InfoCard(
-            icon    = Icons.Default.Info,
-            message = "Create an internal integration at notion.so/profile/integrations, then share the relevant pages/databases with it. Notion MCP uses https://mcp.notion.com/mcp.",
-            color   = SurfaceColor,
-        )
-    }
-}
 
 // ── Step: AgentPhone ──────────────────────────────────────────────────────────
 

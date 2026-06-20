@@ -183,7 +183,7 @@ class OpenClawFcmService : FirebaseMessagingService() {
             "Messages",
             NotificationManager.IMPORTANCE_DEFAULT,
         ).apply {
-            description = "WhatsApp, SMS, Telegram message notifications"
+            description = "WhatsApp, SMS message notifications"
             enableVibration(true)
         })
 

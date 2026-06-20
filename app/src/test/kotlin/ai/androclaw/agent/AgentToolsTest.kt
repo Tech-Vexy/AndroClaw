@@ -3,7 +3,6 @@ package ai.androclaw.agent
 import ai.androclaw.tools.mpesa.MpesaTools
 import ai.androclaw.tools.telephony.TelephonyTools
 import ai.androclaw.tools.messaging.WhatsAppTools
-import ai.androclaw.tools.messaging.TelegramTools
 import ai.androclaw.tools.memory.MemoryTools
 import ai.androclaw.agent.memory.OpenClawMemoryStore
 import kotlinx.coroutines.test.runTest
@@ -70,12 +69,6 @@ class AgentToolsTest {
         assertTrue("whatsapp_send_list_message" in names)
         assertTrue("whatsapp_send_reply_buttons" in names)
         assertTrue("whatsapp_read_messages" in names)
-    }
-
-    @Test
-    fun `TelegramTools registers 4 tools`() {
-        val tools = TelegramTools(config).allTools()
-        assertEquals(4, tools.size)
     }
 
     @Test

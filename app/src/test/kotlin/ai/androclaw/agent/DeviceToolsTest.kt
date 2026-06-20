@@ -49,7 +49,7 @@ class DeviceToolsTest {
     @Test fun `watched packages can be added and cleared`() {
         OpenClawNotificationListener.watchedPackages.clear()
         OpenClawNotificationListener.watchedPackages.add("com.whatsapp")
-        OpenClawNotificationListener.watchedPackages.add("com.telegram.messenger")
+        OpenClawNotificationListener.watchedPackages.add("com.google.android.gm")
         assertEquals(2, OpenClawNotificationListener.watchedPackages.size)
         OpenClawNotificationListener.watchedPackages.clear()
         assertTrue(OpenClawNotificationListener.watchedPackages.isEmpty())

@@ -5,7 +5,6 @@ import ai.androclaw.mcp.McpClientManager
 import ai.androclaw.tools.calendar.CalendarTools
 import ai.androclaw.tools.email.EmailTools
 import ai.androclaw.tools.memory.MemoryTools
-import ai.androclaw.tools.messaging.TelegramTools
 import ai.androclaw.tools.messaging.WhatsAppTools
 import ai.androclaw.tools.mpesa.MpesaTools
 import ai.androclaw.tools.telephony.TelephonyTools
@@ -82,12 +81,6 @@ object OpenClawAgent {
         if (config.hasMpesa) {
             localTools.addAll(MpesaTools(config).allTools())
         }
-        
-        // Telegram Tools
-        if (config.hasTelegram) {
-            localTools.addAll(TelegramTools(config).allTools())
-        }
-        
         // Calendar & Email Tools
         localTools.addAll(CalendarTools(config).allTools())
         localTools.addAll(EmailTools(config).allTools())
@@ -122,14 +115,8 @@ object OpenClawAgent {
             if (config.hasGitHub) {
                 tools(McpClientManager.githubMcp(config).tools)
             }
-            if (config.hasSlack) {
-                tools(McpClientManager.slackMcp(config).tools)
-            }
             if (config.hasLinear) {
                 tools(McpClientManager.linearMcp(config).tools)
-            }
-            if (config.hasNotion) {
-                tools(McpClientManager.notionMcp(config).tools)
             }
             if (config.hasAgentPhone) {
                 tools(McpClientManager.agentPhoneMcp(config).tools)

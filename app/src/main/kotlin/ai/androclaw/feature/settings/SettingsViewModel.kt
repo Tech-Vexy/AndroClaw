@@ -30,19 +30,13 @@ data class SettingsState(
 
     val googleOAuthToken: String    = "",
     val githubPat: String           = "",
-    val slackBotToken: String       = "",
     val linearApiKey: String        = "",
-    val notionToken: String         = "",
 
     // WhatsApp (Vonage Messages API)
     val vonageMsgApiKey: String    = "",
     val vonageMsgApiSecret: String = "",
     val vonageMsgFromNumber: String = "",
     val vonageMsgSandbox: Boolean  = true,
-
-    // Telegram
-    val telegramApiId: String     = "",
-    val telegramApiHash: String   = "",
 
     // M-Pesa
     val mpesaConsumerKey: String    = "",
@@ -75,9 +69,7 @@ class SettingsViewModel(
                     it.copy(
                         googleOAuthToken  = prefs[ConfigStore.GOOGLE_OAUTH_TOKEN]   ?: "",
                         githubPat         = prefs[ConfigStore.GITHUB_PAT]            ?: "",
-                        slackBotToken     = prefs[ConfigStore.SLACK_BOT_TOKEN]       ?: "",
                         linearApiKey      = prefs[ConfigStore.LINEAR_API_KEY]        ?: "",
-                        notionToken       = prefs[ConfigStore.NOTION_TOKEN]          ?: "",
                         agentPhoneApiKey  = store.getSecret(ConfigStore.SecretKeys.AGENTPHONE_API_KEY),
                         isLoading         = false,
                         userName          = prefs[ConfigStore.USER_NAME]            ?: "",
@@ -90,8 +82,6 @@ class SettingsViewModel(
                         vonageMsgApiSecret = store.getSecret(ConfigStore.SecretKeys.VONAGE_MSG_API_SECRET),
                         vonageMsgFromNumber = prefs[ConfigStore.VONAGE_MSG_FROM]    ?: "",
                         vonageMsgSandbox   = prefs[ConfigStore.VONAGE_MSG_SANDBOX]  ?: true,
-                        telegramApiId     = prefs[ConfigStore.TELEGRAM_API_ID]?.toString() ?: "",
-                        telegramApiHash   = prefs[ConfigStore.TELEGRAM_API_HASH]    ?: "",
                         mpesaConsumerKey  = prefs[ConfigStore.MPESA_CONSUMER_KEY]   ?: "",
                         mpesaConsumerSecret = prefs[ConfigStore.MPESA_CONSUMER_SECRET] ?: "",
                         mpesaShortcode    = prefs[ConfigStore.MPESA_SHORTCODE]      ?: "",
@@ -108,9 +98,7 @@ class SettingsViewModel(
     // Field updaters
     fun setGoogleOAuthToken(v: String) = _state.update { it.copy(googleOAuthToken = v) }
     fun setGithubPat(v: String)        = _state.update { it.copy(githubPat = v) }
-    fun setSlackBotToken(v: String)    = _state.update { it.copy(slackBotToken = v) }
     fun setLinearApiKey(v: String)     = _state.update { it.copy(linearApiKey = v) }
-    fun setNotionToken(v: String)      = _state.update { it.copy(notionToken = v) }
     fun setUserName(v: String)         = _state.update { it.copy(userName = v) }
     fun setLanguage(v: String)         = _state.update { it.copy(language = v) }
     fun setGoogleGenAiKey(v: String)   = _state.update { it.copy(googleGenAiKey = v) }
@@ -122,8 +110,6 @@ class SettingsViewModel(
     fun setVonageMsgApiSecret(v: String)  = _state.update { it.copy(vonageMsgApiSecret = v) }
     fun setVonageMsgFromNumber(v: String) = _state.update { it.copy(vonageMsgFromNumber = v) }
     fun setVonageMsgSandbox(v: Boolean)   = _state.update { it.copy(vonageMsgSandbox = v) }
-    fun setTelegramApiId(v: String)    = _state.update { it.copy(telegramApiId = v) }
-    fun setTelegramApiHash(v: String)  = _state.update { it.copy(telegramApiHash = v) }
     fun setMpesaConsumerKey(v: String) = _state.update { it.copy(mpesaConsumerKey = v) }
     fun setMpesaConsumerSecret(v: String) = _state.update { it.copy(mpesaConsumerSecret = v) }
     fun setMpesaShortcode(v: String)   = _state.update { it.copy(mpesaShortcode = v) }
@@ -142,7 +128,6 @@ class SettingsViewModel(
                 set(ConfigStore.VOICE_AUTO_SPEAK,   s.autoSpeak)
                 set(ConfigStore.VONAGE_MSG_FROM,    s.vonageMsgFromNumber)
                 set(ConfigStore.VONAGE_MSG_SANDBOX, s.vonageMsgSandbox)
-                s.telegramApiId.toIntOrNull()?.let { set(ConfigStore.TELEGRAM_API_ID, it) }
                 set(ConfigStore.MPESA_SHORTCODE,    s.mpesaShortcode)
                 set(ConfigStore.MPESA_CALLBACK_URL, s.mpesaCallbackUrl)
                 set(ConfigStore.MPESA_ENV,          s.mpesaEnv)
@@ -155,12 +140,9 @@ class SettingsViewModel(
                 setCartesiaApiKey(s.cartesiaKey)
                 setGoogleOAuthToken(s.googleOAuthToken)
                 setGithubPat(s.githubPat)
-                setSlackBotToken(s.slackBotToken)
                 setLinearApiKey(s.linearApiKey)
-                setNotionToken(s.notionToken)
                 setVonageMsgApiKey(s.vonageMsgApiKey)
                 setVonageMsgApiSecret(s.vonageMsgApiSecret)
-                setTelegramApiHash(s.telegramApiHash)
                 setMpesaConsumerKey(s.mpesaConsumerKey)
                 setMpesaConsumerSecret(s.mpesaConsumerSecret)
                 setMpesaPasskey(s.mpesaPasskey)
@@ -186,19 +168,13 @@ class SettingsViewModel(
                     ConfigStore.SecretKeys.CARTESIA_API_KEY to s.cartesiaKey,
                     ConfigStore.SecretKeys.GOOGLE_OAUTH_TOKEN to s.googleOAuthToken,
                     ConfigStore.SecretKeys.GITHUB_PAT to s.githubPat,
-                    ConfigStore.SecretKeys.SLACK_BOT_TOKEN to s.slackBotToken,
                     ConfigStore.SecretKeys.LINEAR_API_KEY to s.linearApiKey,
-                    ConfigStore.SecretKeys.NOTION_TOKEN to s.notionToken,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_KEY to s.vonageMsgApiKey,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_SECRET to s.vonageMsgApiSecret,
-                    ConfigStore.SecretKeys.TELEGRAM_API_HASH to s.telegramApiHash,
                     ConfigStore.SecretKeys.MPESA_CONSUMER_KEY to s.mpesaConsumerKey,
                     ConfigStore.SecretKeys.MPESA_CONSUMER_SECRET to s.mpesaConsumerSecret,
                     ConfigStore.SecretKeys.MPESA_PASSKEY to s.mpesaPasskey
                 )
-                s.telegramApiId.toIntOrNull()?.let {
-                    configMap[ConfigStore.TELEGRAM_API_ID.name] = it
-                }
                 firestoreManager.saveUserConfig(currentUser.uid, configMap)
             }
 

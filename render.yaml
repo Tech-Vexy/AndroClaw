@@ -54,12 +54,6 @@ services:
         sync: false
       - key: VONAGE_FROM_NUMBER
         sync: false
-      - key: TG_API_ID
-        sync: false
-      - key: TG_API_HASH
-        sync: false
-      - key: TG_SESSION_STRING
-        sync: false
       - key: GOOGLE_GENAI_API_KEY
         sync: false
       - key: AGENTPHONE_API_KEY

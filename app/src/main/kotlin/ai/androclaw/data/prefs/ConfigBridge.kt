@@ -57,9 +57,7 @@ object ConfigBridge {
 
             // Dev connectors
             githubPat        = secret(ConfigStore.SecretKeys.GITHUB_PAT),
-            slackBotToken    = secret(ConfigStore.SecretKeys.SLACK_BOT_TOKEN),
             linearApiKey     = secret(ConfigStore.SecretKeys.LINEAR_API_KEY),
-            notionToken      = secret(ConfigStore.SecretKeys.NOTION_TOKEN),
 
             // Vonage fields removed — telephony now via AgentPhone MCP
 
@@ -71,11 +69,6 @@ object ConfigBridge {
             vonageMsgFromNumber = plain(ConfigStore.VONAGE_MSG_FROM,
                                         BuildConfig.VONAGE_MSG_FROM_NUMBER),
             vonageMsgSandbox    = (prefs[ConfigStore.VONAGE_MSG_SANDBOX] ?: true),
-
-            // Telegram
-            telegramApiId    = plainInt(ConfigStore.TELEGRAM_API_ID),
-            telegramApiHash  = secret(ConfigStore.SecretKeys.TELEGRAM_API_HASH),
-
             // M-Pesa
             mpesaConsumerKey    = secret(ConfigStore.SecretKeys.MPESA_CONSUMER_KEY,
                                          BuildConfig.MPESA_CONSUMER_KEY),

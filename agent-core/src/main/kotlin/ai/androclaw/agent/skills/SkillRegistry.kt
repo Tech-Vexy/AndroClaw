@@ -5,7 +5,6 @@ import ai.androclaw.agent.OpenClawConfig
 import ai.androclaw.tools.email.EmailTools
 import ai.androclaw.tools.mpesa.MpesaTools
 import ai.androclaw.tools.messaging.WhatsAppTools
-import ai.androclaw.tools.messaging.TelegramTools
 import ai.androclaw.tools.calendar.CalendarTools
 import ai.androclaw.tools.memory.MemoryTools
 
@@ -21,8 +20,7 @@ object SkillRegistry {
     fun whatsappTools(config: OpenClawConfig): List<Tool<*, *>> =
         WhatsAppTools(config).allTools()
 
-    fun telegramTools(config: OpenClawConfig): List<Tool<*, *>> =
-        TelegramTools(config).allTools()
+
 
     fun mpesaTools(config: OpenClawConfig): List<Tool<*, *>> =
         MpesaTools(config).allTools()

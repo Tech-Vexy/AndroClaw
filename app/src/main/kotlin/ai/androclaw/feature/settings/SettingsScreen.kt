@@ -158,17 +158,6 @@ fun SettingsScreen(
                 )
             }
 
-            // ── Slack ─────────────────────────────────────────────────────
-            SettingsSection(icon = Icons.Default.Forum, title = "Slack") {
-                SecretTextField(
-                    value         = state.slackBotToken,
-                    onValueChange = vm::setSlackBotToken,
-                    label         = "Bot Token (xoxb-...)",
-                    leadingIcon   = Icons.Default.VpnKey,
-                    isValid       = if (state.slackBotToken.isBlank()) null
-                                    else state.slackBotToken.startsWith("xoxb-") || state.slackBotToken.startsWith("xoxp-"),
-                )
-            }
 
             // ── Linear ────────────────────────────────────────────────────
             SettingsSection(icon = Icons.Default.LinearScale, title = "Linear") {
@@ -181,17 +170,6 @@ fun SettingsScreen(
                 )
             }
 
-            // ── Notion ────────────────────────────────────────────────────
-            SettingsSection(icon = Icons.Default.Article, title = "Notion") {
-                SecretTextField(
-                    value         = state.notionToken,
-                    onValueChange = vm::setNotionToken,
-                    label         = "Integration Token (secret_...)",
-                    leadingIcon   = Icons.Default.VpnKey,
-                    isValid       = if (state.notionToken.isBlank()) null
-                                    else state.notionToken.startsWith("secret_") || state.notionToken.startsWith("ntn_"),
-                )
-            }
 
             // ── Telephony & WhatsApp (Vonage) ─────────────────────────────
             SettingsSection(icon = Icons.Default.Phone, title = "Telephony & WhatsApp (Vonage)") {
@@ -205,12 +183,6 @@ fun SettingsScreen(
                 SettingsToggle("Sandbox Mode", "Use Vonage Messages API Sandbox", state.vonageMsgSandbox, vm::setVonageMsgSandbox)
             }
 
-            // ── Telegram ──────────────────────────────────────────────────
-            SettingsSection(icon = Icons.Default.Send, title = "Telegram") {
-                ConfigTextField(state.telegramApiId,   vm::setTelegramApiId,   "API ID",   leadingIcon = Icons.Default.Numbers)
-                Spacer(Modifier.height(10.dp))
-                SecretTextField(state.telegramApiHash, vm::setTelegramApiHash, "API Hash", Icons.Default.Tag)
-            }
 
             // ── M-Pesa ────────────────────────────────────────────────────
             SettingsSection(icon = Icons.Default.AccountBalanceWallet, title = "M-Pesa (Daraja)") {

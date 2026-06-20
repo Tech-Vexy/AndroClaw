@@ -14,8 +14,8 @@ import kotlinx.coroutines.runBlocking
  * Central registry of all MCP server connections.
  *
  * Transport choice per server:
- *   SSE              — Google Workspace (Gmail, Calendar, Drive), Slack
- *   StreamableHTTP   — GitHub, Linear, Notion  (preferred; more reliable)
+ *   SSE              — Google Workspace (Gmail, Calendar, Drive)
+ *   StreamableHTTP   — GitHub, Linear (preferred; more reliable)
  *   SSE (self-hosted)— Vonage MCP, M-Pesa MCP  (our Render gateway)
  *
  * All connections are lazy — the Koog MCP client only opens the SSE stream
@@ -146,38 +146,6 @@ object McpClientManager {
         ))
     }
 
-    // ── Slack ─────────────────────────────────────────────────────────────────
-
-    fun slackMcp(config: OpenClawConfig): ToolRegistry = runBlocking {
-        val transport = McpToolRegistryProvider.defaultSseTransport(
-            "https://mcp.slack.com/sse",
-            HttpClient {
-                install(DefaultRequest) {
-                    header("Authorization", "Bearer ${config.slackBotToken}")
-                }
-            }
-        )
-        val registry = McpToolRegistryProvider.fromTransport(
-            transport,
-            McpServerInfo("https://mcp.slack.com/sse", ""),
-            DefaultMcpToolDescriptorParser,
-            "slack",
-            "1.0"
-        ) as ToolRegistry
-        registry.filter(setOf(
-            "slack_list_channels",
-            "slack_get_channel_history",
-            "slack_post_message",
-            "slack_reply_to_thread",
-            "slack_add_reaction",
-            "slack_get_users",
-            "slack_search_messages",
-            "slack_list_dms",
-            "slack_send_dm",
-            "slack_upload_file",
-            "slack_get_user_profile",
-        ))
-    }
 
     // ── Linear ────────────────────────────────────────────────────────────────
 
@@ -208,34 +176,6 @@ object McpClientManager {
         ))
     }
 
-    // ── Notion ────────────────────────────────────────────────────────────────
-
-    fun notionMcp(config: OpenClawConfig): ToolRegistry = runBlocking {
-        val registry = McpToolRegistryProvider.streamableHttp {
-            url = "https://mcp.notion.com/mcp"
-            name = "notion"
-            version = "1.0"
-            httpClient = HttpClient {
-                install(DefaultRequest) {
-                    header("Authorization", "Bearer ${config.notionToken}")
-                    header("Notion-Version", "2025-09-03")
-                }
-            }
-        } as ToolRegistry
-        registry.filter(setOf(
-            "notion-search",
-            "notion-fetch",
-            "notion-create-pages",
-            "notion-update-page",
-            "notion-move-pages",
-            "notion-duplicate-page",
-            "notion-create-database",
-            "notion-update-database",
-            "notion-create-comment",
-            "notion-get-comments",
-            "notion-get-users",
-        ))
-    }
 
     // ── AgentPhone ────────────────────────────────────────────────────────────
 

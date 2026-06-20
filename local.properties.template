@@ -36,18 +36,9 @@ GOOGLE_OAUTH_TOKEN=ya29.REPLACE_ME
 # https://github.com/settings/tokens — scopes: repo, issues, notifications, read:user
 GITHUB_PAT=ghp_REPLACE_ME
 
-# ── Slack ─────────────────────────────────────────────────────────────────────
-# Create app at https://api.slack.com/apps — scopes: channels:read, channels:history,
-# chat:write, users:read, search:read, dm:read, dm:write
-SLACK_BOT_TOKEN=xoxb-REPLACE_ME
-
 # ── Linear ────────────────────────────────────────────────────────────────────
 # https://linear.app/settings/api
 LINEAR_API_KEY=lin_api_REPLACE_ME
-
-# ── Notion ────────────────────────────────────────────────────────────────────
-# https://www.notion.so/profile/integrations
-NOTION_TOKEN=secret_REPLACE_ME
 
 # ── M-Pesa (Daraja) ───────────────────────────────────────────────────────────
 MPESA_CONSUMER_KEY=REPLACE_ME

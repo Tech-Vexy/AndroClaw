@@ -62,12 +62,9 @@ class ConfigStore(private val context: Context) {
         const val CARTESIA_API_KEY       = "cartesia_api_key"
         const val GOOGLE_OAUTH_TOKEN     = "google_oauth_token"
         const val GITHUB_PAT             = "github_pat"
-        const val SLACK_BOT_TOKEN        = "slack_bot_token"
         const val LINEAR_API_KEY         = "linear_api_key"
-        const val NOTION_TOKEN           = "notion_token"
         const val VONAGE_MSG_API_KEY    = "vonage_msg_api_key"
         const val VONAGE_MSG_API_SECRET = "vonage_msg_api_secret"
-        const val TELEGRAM_API_HASH      = "telegram_api_hash"
         const val MPESA_CONSUMER_KEY     = "mpesa_consumer_key"
         const val MPESA_CONSUMER_SECRET  = "mpesa_consumer_secret"
         const val MPESA_PASSKEY          = "mpesa_passkey"
@@ -86,10 +83,6 @@ class ConfigStore(private val context: Context) {
         val VOICE_AUTO_SPEAK    = booleanPreferencesKey("voice_auto_speak")
         val CARTESIA_VOICE_ID   = stringPreferencesKey("cartesia_voice_id")
 
-        // Messaging
-        val TELEGRAM_API_ID     = intPreferencesKey("telegram_api_id")
-        val TELEGRAM_SESSION    = stringPreferencesKey("telegram_session")
-
         // M-Pesa (non-secret fields)
         val MPESA_SHORTCODE     = stringPreferencesKey("mpesa_shortcode")
         val MPESA_CALLBACK_URL  = stringPreferencesKey("mpesa_callback_url")
@@ -104,13 +97,10 @@ class ConfigStore(private val context: Context) {
         val AGENTPHONE_API_KEY  = stringPreferencesKey("agentphone_api_key_present")
         val GOOGLE_OAUTH_TOKEN  = stringPreferencesKey("google_oauth_token_present")
         val GITHUB_PAT          = stringPreferencesKey("github_pat_present")
-        val SLACK_BOT_TOKEN     = stringPreferencesKey("slack_bot_token_present")
         val LINEAR_API_KEY      = stringPreferencesKey("linear_api_key_present")
-        val NOTION_TOKEN        = stringPreferencesKey("notion_token_present")
         val VONAGE_MSG_API_KEY   = stringPreferencesKey("vonage_msg_api_key_present")
         val VONAGE_MSG_FROM      = stringPreferencesKey("vonage_msg_from_number")
         val VONAGE_MSG_SANDBOX   = booleanPreferencesKey("vonage_msg_sandbox")
-        val TELEGRAM_API_HASH   = stringPreferencesKey("telegram_api_hash_present")
         val MPESA_CONSUMER_KEY  = stringPreferencesKey("mpesa_consumer_key_present")
         val MPESA_CONSUMER_SECRET = stringPreferencesKey("mpesa_consumer_secret_present")
         val MPESA_PASSKEY       = stringPreferencesKey("mpesa_passkey_present")
@@ -174,18 +164,12 @@ class ConfigStore(private val context: Context) {
         setSecret(SecretKeys.GOOGLE_OAUTH_TOKEN, v, GOOGLE_OAUTH_TOKEN)
     suspend fun setGithubPat(v: String)       =
         setSecret(SecretKeys.GITHUB_PAT, v, GITHUB_PAT)
-    suspend fun setSlackBotToken(v: String)   =
-        setSecret(SecretKeys.SLACK_BOT_TOKEN, v, SLACK_BOT_TOKEN)
     suspend fun setLinearApiKey(v: String)    =
         setSecret(SecretKeys.LINEAR_API_KEY, v, LINEAR_API_KEY)
-    suspend fun setNotionToken(v: String)     =
-        setSecret(SecretKeys.NOTION_TOKEN, v, NOTION_TOKEN)
     suspend fun setVonageMsgApiKey(v: String) =
         setSecret(SecretKeys.VONAGE_MSG_API_KEY, v, VONAGE_MSG_API_KEY)
     suspend fun setVonageMsgApiSecret(v: String) =
         setSecret(SecretKeys.VONAGE_MSG_API_SECRET, v, stringPreferencesKey("vonage_msg_api_secret_present"))
-    suspend fun setTelegramApiHash(v: String) =
-        setSecret(SecretKeys.TELEGRAM_API_HASH, v, TELEGRAM_API_HASH)
     suspend fun setMpesaConsumerKey(v: String) =
         setSecret(SecretKeys.MPESA_CONSUMER_KEY, v, MPESA_CONSUMER_KEY)
     suspend fun setMpesaConsumerSecret(v: String) =
@@ -199,8 +183,8 @@ class ConfigStore(private val context: Context) {
     suspend fun clearSecrets() {
         encryptedPrefs.edit().clear().apply()
         context.plainDataStore.edit { prefs ->
-            listOf(GOOGLE_GENAI_API_KEY, GOOGLE_OAUTH_TOKEN, GITHUB_PAT, SLACK_BOT_TOKEN,
-                   LINEAR_API_KEY, NOTION_TOKEN, VONAGE_MSG_API_KEY, TELEGRAM_API_HASH,
+            listOf(GOOGLE_GENAI_API_KEY, GOOGLE_OAUTH_TOKEN, GITHUB_PAT,
+                   LINEAR_API_KEY, VONAGE_MSG_API_KEY,
                    MPESA_CONSUMER_KEY, MPESA_CONSUMER_SECRET, MPESA_PASSKEY, BRIDGE_SECRET)
                 .forEach { prefs.remove(it) }
         }
