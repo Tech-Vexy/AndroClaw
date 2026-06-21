@@ -30,7 +30,6 @@ data class SettingsState(
 
     val googleOAuthToken: String    = "",
     val githubPat: String           = "",
-    val linearApiKey: String        = "",
 
     // WhatsApp (Vonage Messages API)
     val vonageMsgApiKey: String    = "",
@@ -63,7 +62,6 @@ class SettingsViewModel(
                     it.copy(
                         googleOAuthToken  = prefs[ConfigStore.GOOGLE_OAUTH_TOKEN]   ?: "",
                         githubPat         = prefs[ConfigStore.GITHUB_PAT]            ?: "",
-                        linearApiKey      = prefs[ConfigStore.LINEAR_API_KEY]        ?: "",
                         agentPhoneApiKey  = store.getSecret(ConfigStore.SecretKeys.AGENTPHONE_API_KEY),
                         isLoading         = false,
                         userName          = prefs[ConfigStore.USER_NAME]            ?: "",
@@ -87,7 +85,6 @@ class SettingsViewModel(
     // Field updaters
     fun setGoogleOAuthToken(v: String) = _state.update { it.copy(googleOAuthToken = v) }
     fun setGithubPat(v: String)        = _state.update { it.copy(githubPat = v) }
-    fun setLinearApiKey(v: String)     = _state.update { it.copy(linearApiKey = v) }
     fun setUserName(v: String)         = _state.update { it.copy(userName = v) }
     fun setLanguage(v: String)         = _state.update { it.copy(language = v) }
     fun setGoogleGenAiKey(v: String)   = _state.update { it.copy(googleGenAiKey = v) }
@@ -122,7 +119,6 @@ class SettingsViewModel(
                 setCartesiaApiKey(s.cartesiaKey)
                 setGoogleOAuthToken(s.googleOAuthToken)
                 setGithubPat(s.githubPat)
-                setLinearApiKey(s.linearApiKey)
                 setVonageMsgApiKey(s.vonageMsgApiKey)
                 setVonageMsgApiSecret(s.vonageMsgApiSecret)
 
@@ -145,7 +141,6 @@ class SettingsViewModel(
                     ConfigStore.SecretKeys.CARTESIA_API_KEY to s.cartesiaKey,
                     ConfigStore.SecretKeys.GOOGLE_OAUTH_TOKEN to s.googleOAuthToken,
                     ConfigStore.SecretKeys.GITHUB_PAT to s.githubPat,
-                    ConfigStore.SecretKeys.LINEAR_API_KEY to s.linearApiKey,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_KEY to s.vonageMsgApiKey,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_SECRET to s.vonageMsgApiSecret
                 )

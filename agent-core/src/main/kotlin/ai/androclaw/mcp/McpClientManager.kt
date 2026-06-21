@@ -15,7 +15,7 @@ import kotlinx.coroutines.runBlocking
  *
  * Transport choice per server:
  *   SSE              — Google Workspace (Gmail, Calendar, Drive)
- *   StreamableHTTP   — GitHub, Linear (preferred; more reliable)
+ *   StreamableHTTP   — GitHub (preferred; more reliable)
  *   SSE (self-hosted)— Vonage MCP, M-Pesa MCP  (our Render gateway)
  *
  * All connections are lazy — the Koog MCP client only opens the SSE stream
@@ -143,36 +143,6 @@ object McpClientManager {
             "get_file_contents",
             "search_code",
             "list_notifications",
-        ))
-    }
-
-
-    // ── Linear ────────────────────────────────────────────────────────────────
-
-    fun linearMcp(config: OpenClawConfig): ToolRegistry = runBlocking {
-        val registry = McpToolRegistryProvider.streamableHttp {
-            url = "https://mcp.linear.app/mcp"
-            name = "linear"
-            version = "1.0"
-            httpClient = HttpClient {
-                install(DefaultRequest) {
-                    header("Authorization", "Bearer ${config.linearApiKey}")
-                }
-            }
-        } as ToolRegistry
-        registry.filter(setOf(
-            "linear_list_issues",
-            "linear_get_issue",
-            "linear_create_issue",
-            "linear_update_issue",
-            "linear_list_projects",
-            "linear_get_project",
-            "linear_list_teams",
-            "linear_list_cycles",
-            "linear_search_issues",
-            "linear_list_my_issues",
-            "linear_add_comment",
-            "linear_list_labels",
         ))
     }
 

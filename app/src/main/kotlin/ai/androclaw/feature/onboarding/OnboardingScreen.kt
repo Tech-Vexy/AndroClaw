@@ -85,7 +85,6 @@ fun OnboardingScreen(
                         OnboardingStep.VOICE        -> VoiceStep(state, vm)
                         OnboardingStep.GOOGLE       -> GoogleStep(state, vm)
                         OnboardingStep.GITHUB       -> GitHubStep(state, vm)
-                        OnboardingStep.LINEAR       -> LinearStep(state, vm)
                         OnboardingStep.WHATSAPP     -> WhatsAppStep(state, vm)
                         OnboardingStep.GATEWAY      -> GatewayStep(state, vm)
                         OnboardingStep.DONE         -> {}
@@ -329,7 +328,6 @@ fun BottomNavBar(state: OnboardingState, vm: OnboardingViewModel) {
         OnboardingStep.AGENTPHONE,
         OnboardingStep.GOOGLE,
         OnboardingStep.GITHUB,
-        OnboardingStep.LINEAR,
         OnboardingStep.WHATSAPP,
     )
     val isLast = state.step == OnboardingStep.GATEWAY
@@ -620,34 +618,7 @@ fun GitHubStep(state: OnboardingState, vm: OnboardingViewModel) {
 
 
 
-// ── Step: Linear ──────────────────────────────────────────────────────────────
 
-@Composable
-fun LinearStep(state: OnboardingState, vm: OnboardingViewModel) {
-    StepScaffold(
-        icon        = Icons.Default.LinearScale,
-        title       = "Linear",
-        description = "Manage issues, projects, and cycles via Linear's official remote MCP server.",
-        helpUrl     = "https://linear.app/settings/api",
-        helpLabel   = "Get Linear API key →",
-        isOptional  = true,
-    ) {
-        SecretTextField(
-            value         = state.linearApiKey,
-            onValueChange = vm::setLinearApiKey,
-            label         = "Linear API Key",
-            placeholder   = "lin_api_...",
-            leadingIcon   = Icons.Default.VpnKey,
-            isValid       = state.linearApiKey.startsWith("lin_api_"),
-        )
-        Spacer(Modifier.height(12.dp))
-        InfoCard(
-            icon    = Icons.Default.Check,
-            message = "Linear MCP uses https://mcp.linear.app/mcp (Streamable HTTP). SSE was deprecated in Feb 2026.",
-            color   = SuccessGreen.copy(alpha = 0.10f),
-        )
-    }
-}
 
 
 

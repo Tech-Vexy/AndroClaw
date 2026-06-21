@@ -25,9 +25,6 @@ data class OpenClawConfig(
     // GitHub
     val githubPat: String           = "",
 
-    // Linear
-    val linearApiKey: String        = "",     // lin_api_...
-
     // Telephony (AgentPhone — via MCP)
     // No local credentials needed; handled entirely by AgentPhone MCP.
 
@@ -52,7 +49,6 @@ data class OpenClawConfig(
     val hasAgentPhone: Boolean get() = agentPhoneApiKey.isNotBlank()
     val hasGoogle: Boolean    get() = googleOAuthToken.isNotBlank()
     val hasGitHub: Boolean    get() = githubPat.isNotBlank()
-    val hasLinear: Boolean    get() = linearApiKey.isNotBlank()
     val hasGateway: Boolean   get() = gatewayBaseUrl.startsWith("https://")
     val hasWhatsApp: Boolean  get() = vonageMsgApiKey.isNotBlank() && vonageMsgApiSecret.isNotBlank()
     val hasGoogleGenAi: Boolean get() = googleGenAiApiKey.isNotBlank()

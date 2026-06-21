@@ -62,7 +62,6 @@ class ConfigStore(private val context: Context) {
         const val CARTESIA_API_KEY       = "cartesia_api_key"
         const val GOOGLE_OAUTH_TOKEN     = "google_oauth_token"
         const val GITHUB_PAT             = "github_pat"
-        const val LINEAR_API_KEY         = "linear_api_key"
         const val VONAGE_MSG_API_KEY    = "vonage_msg_api_key"
         const val VONAGE_MSG_API_SECRET = "vonage_msg_api_secret"
         const val BRIDGE_SECRET          = "bridge_secret"
@@ -90,7 +89,6 @@ class ConfigStore(private val context: Context) {
         val AGENTPHONE_API_KEY  = stringPreferencesKey("agentphone_api_key_present")
         val GOOGLE_OAUTH_TOKEN  = stringPreferencesKey("google_oauth_token_present")
         val GITHUB_PAT          = stringPreferencesKey("github_pat_present")
-        val LINEAR_API_KEY      = stringPreferencesKey("linear_api_key_present")
         val VONAGE_MSG_API_KEY   = stringPreferencesKey("vonage_msg_api_key_present")
         val VONAGE_MSG_FROM      = stringPreferencesKey("vonage_msg_from_number")
         val VONAGE_MSG_SANDBOX   = booleanPreferencesKey("vonage_msg_sandbox")
@@ -154,8 +152,7 @@ class ConfigStore(private val context: Context) {
         setSecret(SecretKeys.GOOGLE_OAUTH_TOKEN, v, GOOGLE_OAUTH_TOKEN)
     suspend fun setGithubPat(v: String)       =
         setSecret(SecretKeys.GITHUB_PAT, v, GITHUB_PAT)
-    suspend fun setLinearApiKey(v: String)    =
-        setSecret(SecretKeys.LINEAR_API_KEY, v, LINEAR_API_KEY)
+
     suspend fun setVonageMsgApiKey(v: String) =
         setSecret(SecretKeys.VONAGE_MSG_API_KEY, v, VONAGE_MSG_API_KEY)
     suspend fun setVonageMsgApiSecret(v: String) =
@@ -169,7 +166,7 @@ class ConfigStore(private val context: Context) {
         encryptedPrefs.edit().clear().apply()
         context.plainDataStore.edit { prefs ->
             listOf(GOOGLE_GENAI_API_KEY, GOOGLE_OAUTH_TOKEN, GITHUB_PAT,
-                   LINEAR_API_KEY, VONAGE_MSG_API_KEY, BRIDGE_SECRET)
+                   VONAGE_MSG_API_KEY, BRIDGE_SECRET)
                 .forEach { prefs.remove(it) }
         }
     }

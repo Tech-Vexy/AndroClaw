@@ -16,7 +16,6 @@ enum class OnboardingStep {
     VOICE,
     GOOGLE,
     GITHUB,
-    LINEAR,
     WHATSAPP,
     GATEWAY,
     DONE,
@@ -42,7 +41,6 @@ data class OnboardingState(
     val googleOAuthToken: String    = "",
 
     val githubPat: String           = "",
-    val linearApiKey: String        = "",
 
     val vonageMsgApiKey: String   = "",
     val vonageMsgApiSecret: String = "",
@@ -70,7 +68,6 @@ class OnboardingViewModel(
 
     fun setGoogleOAuthToken(v: String) = update { copy(googleOAuthToken = v) }
     fun setGithubPat(v: String)        = update { copy(githubPat = v) }
-    fun setLinearApiKey(v: String)     = update { copy(linearApiKey = v) }
     fun setUserName(v: String)         = update { copy(userName = v) }
     fun setLanguage(v: String)          = update { copy(language = v) }
     fun setGoogleGenAiKey(v: String)    = update { copy(googleGenAiKey = v) }
@@ -129,7 +126,6 @@ class OnboardingViewModel(
                 setCartesiaApiKey(s.cartesiaKey)
                 setGoogleOAuthToken(s.googleOAuthToken)
                 setGithubPat(s.githubPat)
-                setLinearApiKey(s.linearApiKey)
                 setVonageMsgApiKey(s.vonageMsgApiKey)
                 setVonageMsgApiSecret(s.vonageMsgApiSecret)
 
@@ -153,7 +149,6 @@ class OnboardingViewModel(
                     ConfigStore.SecretKeys.CARTESIA_API_KEY to s.cartesiaKey,
                     ConfigStore.SecretKeys.GOOGLE_OAUTH_TOKEN to s.googleOAuthToken,
                     ConfigStore.SecretKeys.GITHUB_PAT to s.githubPat,
-                    ConfigStore.SecretKeys.LINEAR_API_KEY to s.linearApiKey,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_KEY to s.vonageMsgApiKey,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_SECRET to s.vonageMsgApiSecret
                 )
@@ -182,7 +177,6 @@ class OnboardingViewModel(
             OnboardingStep.AGENTPHONE,
             OnboardingStep.GOOGLE,
             OnboardingStep.GITHUB,
-            OnboardingStep.LINEAR,
             OnboardingStep.WHATSAPP,
             OnboardingStep.DONE       -> true
         }

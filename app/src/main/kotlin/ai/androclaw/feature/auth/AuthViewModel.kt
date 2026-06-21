@@ -160,7 +160,6 @@ class AuthViewModel(
                         "cartesia_api_key" -> configStore.setCartesiaApiKey(value)
                         "google_oauth_token" -> configStore.setGoogleOAuthToken(value)
                         "github_pat" -> configStore.setGithubPat(value)
-                        "linear_api_key" -> configStore.setLinearApiKey(value)
                         "vonage_msg_api_key" -> configStore.setVonageMsgApiKey(value)
                         "vonage_msg_api_secret" -> configStore.setVonageMsgApiSecret(value)
                     }

@@ -30,11 +30,6 @@ GOOGLE_OAUTH_CLIENT_ID=REPLACE_ME.apps.googleusercontent.com
 # ── GitHub ────────────────────────────────────────────────────────────────────
 # https://github.com/settings/tokens — scopes: repo, issues, notifications, read:user
 GITHUB_PAT=ghp_REPLACE_ME
-
-# ── Linear ────────────────────────────────────────────────────────────────────
-# https://linear.app/settings/api
-LINEAR_API_KEY=lin_api_REPLACE_ME
-
 # ── Gateway (Render) ──────────────────────────────────────────────────────────
 # Set to your deployed Render URL after setting up the blueprint (render.yaml)
 GATEWAY_BASE_URL_DEBUG=https://your-dev-gateway.onrender.com

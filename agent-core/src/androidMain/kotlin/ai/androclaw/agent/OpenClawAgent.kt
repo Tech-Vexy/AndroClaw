@@ -105,9 +105,7 @@ object OpenClawAgent {
             if (config.hasGitHub) {
                 tools(McpClientManager.githubMcp(config).tools)
             }
-            if (config.hasLinear) {
-                tools(McpClientManager.linearMcp(config).tools)
-            }
+
             if (config.hasAgentPhone) {
                 tools(McpClientManager.agentPhoneMcp(config).tools)
             }

@@ -159,18 +159,6 @@ fun SettingsScreen(
             }
 
 
-            // ── Linear ────────────────────────────────────────────────────
-            SettingsSection(icon = Icons.Default.LinearScale, title = "Linear") {
-                SecretTextField(
-                    value         = state.linearApiKey,
-                    onValueChange = vm::setLinearApiKey,
-                    label         = "API Key (lin_api_...)",
-                    leadingIcon   = Icons.Default.VpnKey,
-                    isValid       = if (state.linearApiKey.isBlank()) null else state.linearApiKey.startsWith("lin_api_"),
-                )
-            }
-
-
             // ── Telephony & WhatsApp (Vonage) ─────────────────────────────
             SettingsSection(icon = Icons.Default.Phone, title = "Telephony & WhatsApp (Vonage)") {
                 SecretTextField(state.vonageMsgApiKey,    vm::setVonageMsgApiKey,    "API Key",     Icons.Default.VpnKey)

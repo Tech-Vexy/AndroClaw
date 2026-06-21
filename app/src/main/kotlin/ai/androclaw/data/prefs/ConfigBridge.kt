@@ -56,7 +56,6 @@ object ConfigBridge {
 
             // Dev connectors
             githubPat        = secret(ConfigStore.SecretKeys.GITHUB_PAT),
-            linearApiKey     = secret(ConfigStore.SecretKeys.LINEAR_API_KEY),
 
             // Vonage fields removed — telephony now via AgentPhone MCP
 
