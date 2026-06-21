@@ -51,9 +51,8 @@ object ConfigBridge {
             agentPhoneApiKey = secret(ConfigStore.SecretKeys.AGENTPHONE_API_KEY,
                                       BuildConfig.AGENTPHONE_API_KEY),
 
-            // Google OAuth (falls back to BuildConfig for testing)
-            googleOAuthToken = secret(ConfigStore.SecretKeys.GOOGLE_OAUTH_TOKEN,
-                                      BuildConfig.GOOGLE_OAUTH_TOKEN),
+            // Google OAuth
+            googleOAuthToken = secret(ConfigStore.SecretKeys.GOOGLE_OAUTH_TOKEN),
 
             // Dev connectors
             githubPat        = secret(ConfigStore.SecretKeys.GITHUB_PAT),

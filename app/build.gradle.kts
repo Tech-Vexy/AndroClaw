@@ -54,10 +54,6 @@ android {
         buildConfigField("String", "VONAGE_MSG_FROM_NUMBER",
             "\"${localProp("VONAGE_MSG_FROM_NUMBER", "14157386102")}\"")
 
-        // Google OAuth testing token fallback
-        buildConfigField("String", "GOOGLE_OAUTH_TOKEN",
-            "\"${localProp("GOOGLE_OAUTH_TOKEN")}\"")
-
         // Gateway authorization secret
         buildConfigField("String", "BRIDGE_SECRET",
             "\"${localProp("BRIDGE_SECRET")}\"")

@@ -27,11 +27,6 @@ AGENTPHONE_API_KEY=ap_live_REPLACE_ME
 # Also add the SHA-1 of your debug keystore in the Cloud Console
 GOOGLE_OAUTH_CLIENT_ID=REPLACE_ME.apps.googleusercontent.com
 
-# ── Google Workspace (Gmail + Calendar + Drive MCP) ──────────────────────────
-# Obtain via Android AccountManager / Google Sign-In at runtime
-# Paste a temporary token here for initial testing
-GOOGLE_OAUTH_TOKEN=ya29.REPLACE_ME
-
 # ── GitHub ────────────────────────────────────────────────────────────────────
 # https://github.com/settings/tokens — scopes: repo, issues, notifications, read:user
 GITHUB_PAT=ghp_REPLACE_ME
