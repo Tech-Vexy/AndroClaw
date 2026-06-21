@@ -15,7 +15,7 @@ class SecurityTest {
             "cartesia_api_key","google_oauth_token","github_pat",
             "linear_api_key","vonage_api_key","vonage_api_secret",
             "vonage_private_key","whatsapp_token",
-            "mpesa_consumer_key","mpesa_consumer_secret","mpesa_passkey","bridge_secret")
+            "bridge_secret")
         assertEquals(keys.size, keys.toSet().size)
     }
     @Test fun `detects ConnectException as network error`() {

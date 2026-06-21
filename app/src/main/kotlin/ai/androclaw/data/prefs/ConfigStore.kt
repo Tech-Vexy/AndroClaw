@@ -65,9 +65,6 @@ class ConfigStore(private val context: Context) {
         const val LINEAR_API_KEY         = "linear_api_key"
         const val VONAGE_MSG_API_KEY    = "vonage_msg_api_key"
         const val VONAGE_MSG_API_SECRET = "vonage_msg_api_secret"
-        const val MPESA_CONSUMER_KEY     = "mpesa_consumer_key"
-        const val MPESA_CONSUMER_SECRET  = "mpesa_consumer_secret"
-        const val MPESA_PASSKEY          = "mpesa_passkey"
         const val BRIDGE_SECRET          = "bridge_secret"
     }
 
@@ -83,10 +80,6 @@ class ConfigStore(private val context: Context) {
         val VOICE_AUTO_SPEAK    = booleanPreferencesKey("voice_auto_speak")
         val CARTESIA_VOICE_ID   = stringPreferencesKey("cartesia_voice_id")
 
-        // M-Pesa (non-secret fields)
-        val MPESA_SHORTCODE     = stringPreferencesKey("mpesa_shortcode")
-        val MPESA_CALLBACK_URL  = stringPreferencesKey("mpesa_callback_url")
-        val MPESA_ENV           = stringPreferencesKey("mpesa_env")
 
         // Gateway (non-secret)
         val GATEWAY_BASE_URL    = stringPreferencesKey("gateway_base_url")
@@ -101,9 +94,6 @@ class ConfigStore(private val context: Context) {
         val VONAGE_MSG_API_KEY   = stringPreferencesKey("vonage_msg_api_key_present")
         val VONAGE_MSG_FROM      = stringPreferencesKey("vonage_msg_from_number")
         val VONAGE_MSG_SANDBOX   = booleanPreferencesKey("vonage_msg_sandbox")
-        val MPESA_CONSUMER_KEY  = stringPreferencesKey("mpesa_consumer_key_present")
-        val MPESA_CONSUMER_SECRET = stringPreferencesKey("mpesa_consumer_secret_present")
-        val MPESA_PASSKEY       = stringPreferencesKey("mpesa_passkey_present")
         val BRIDGE_SECRET       = stringPreferencesKey("bridge_secret_present")
     }
 
@@ -170,12 +160,7 @@ class ConfigStore(private val context: Context) {
         setSecret(SecretKeys.VONAGE_MSG_API_KEY, v, VONAGE_MSG_API_KEY)
     suspend fun setVonageMsgApiSecret(v: String) =
         setSecret(SecretKeys.VONAGE_MSG_API_SECRET, v, stringPreferencesKey("vonage_msg_api_secret_present"))
-    suspend fun setMpesaConsumerKey(v: String) =
-        setSecret(SecretKeys.MPESA_CONSUMER_KEY, v, MPESA_CONSUMER_KEY)
-    suspend fun setMpesaConsumerSecret(v: String) =
-        setSecret(SecretKeys.MPESA_CONSUMER_SECRET, v, MPESA_CONSUMER_SECRET)
-    suspend fun setMpesaPasskey(v: String)    =
-        setSecret(SecretKeys.MPESA_PASSKEY, v, MPESA_PASSKEY)
+
     suspend fun setBridgeSecret(v: String)    =
         setSecret(SecretKeys.BRIDGE_SECRET, v, BRIDGE_SECRET)
 
@@ -184,8 +169,7 @@ class ConfigStore(private val context: Context) {
         encryptedPrefs.edit().clear().apply()
         context.plainDataStore.edit { prefs ->
             listOf(GOOGLE_GENAI_API_KEY, GOOGLE_OAUTH_TOKEN, GITHUB_PAT,
-                   LINEAR_API_KEY, VONAGE_MSG_API_KEY,
-                   MPESA_CONSUMER_KEY, MPESA_CONSUMER_SECRET, MPESA_PASSKEY, BRIDGE_SECRET)
+                   LINEAR_API_KEY, VONAGE_MSG_API_KEY, BRIDGE_SECRET)
                 .forEach { prefs.remove(it) }
         }
     }

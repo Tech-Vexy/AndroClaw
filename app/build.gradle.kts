@@ -54,16 +54,6 @@ android {
         buildConfigField("String", "VONAGE_MSG_FROM_NUMBER",
             "\"${localProp("VONAGE_MSG_FROM_NUMBER", "14157386102")}\"")
 
-        // M-Pesa
-        buildConfigField("String", "MPESA_CONSUMER_KEY",
-            "\"${localProp("MPESA_CONSUMER_KEY")}\"")
-        buildConfigField("String", "MPESA_CONSUMER_SECRET",
-            "\"${localProp("MPESA_CONSUMER_SECRET")}\"")
-        buildConfigField("String", "MPESA_SHORTCODE",
-            "\"${localProp("MPESA_SHORTCODE", "174379")}\"")
-        buildConfigField("String", "MPESA_PASSKEY",
-            "\"${localProp("MPESA_PASSKEY")}\"")
-
         // Google OAuth testing token fallback
         buildConfigField("String", "GOOGLE_OAUTH_TOKEN",
             "\"${localProp("GOOGLE_OAUTH_TOKEN")}\"")

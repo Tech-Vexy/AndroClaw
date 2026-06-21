@@ -87,7 +87,6 @@ fun OnboardingScreen(
                         OnboardingStep.GITHUB       -> GitHubStep(state, vm)
                         OnboardingStep.LINEAR       -> LinearStep(state, vm)
                         OnboardingStep.WHATSAPP     -> WhatsAppStep(state, vm)
-                        OnboardingStep.MPESA        -> MpesaStep(state, vm)
                         OnboardingStep.GATEWAY      -> GatewayStep(state, vm)
                         OnboardingStep.DONE         -> {}
                     }
@@ -294,58 +293,6 @@ fun WhatsAppStep(state: OnboardingState, vm: OnboardingViewModel) {
 
 
 
-// ── Step: M-Pesa ─────────────────────────────────────────────────────────────
-
-@Composable
-fun MpesaStep(state: OnboardingState, vm: OnboardingViewModel) {
-    StepScaffold(
-        icon        = Icons.Default.AccountBalanceWallet,
-        title       = "M-Pesa (Daraja)",
-        description = "Enables STK push, B2C payments, and transaction queries. Get credentials from developer.safaricom.co.ke.",
-        helpUrl     = "https://developer.safaricom.co.ke",
-        helpLabel   = "Daraja portal →",
-        isOptional  = true,
-    ) {
-        // Sandbox / Production toggle
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
-        ) {
-            LanguageChip("Sandbox",    state.mpesaEnv == "sandbox",    { vm.setMpesaEnv("sandbox") },    Modifier.weight(1f))
-            LanguageChip("Production", state.mpesaEnv == "production", { vm.setMpesaEnv("production") }, Modifier.weight(1f))
-        }
-
-        if (state.mpesaEnv == "production") {
-            Spacer(Modifier.height(8.dp))
-            InfoCard(Icons.Default.Warning, "Production — real money. Double-check all values.", WarnOrange.copy(0.15f))
-        }
-
-        Spacer(Modifier.height(10.dp))
-        SecretTextField(state.mpesaConsumerKey,    vm::setMpesaConsumerKey,    "Consumer Key",    Icons.Default.VpnKey)
-        Spacer(Modifier.height(10.dp))
-        SecretTextField(state.mpesaConsumerSecret, vm::setMpesaConsumerSecret, "Consumer Secret", Icons.Default.Lock)
-        Spacer(Modifier.height(10.dp))
-        ConfigTextField(
-            value         = state.mpesaShortcode,
-            onValueChange = vm::setMpesaShortcode,
-            label         = "Shortcode / Paybill",
-            placeholder   = "174379",
-            leadingIcon   = Icons.Default.Tag,
-            keyboardType  = KeyboardType.Number,
-        )
-        Spacer(Modifier.height(10.dp))
-        SecretTextField(state.mpesaPasskey, vm::setMpesaPasskey, "Passkey", Icons.Default.Password)
-        Spacer(Modifier.height(10.dp))
-        ConfigTextField(
-            value         = state.mpesaCallbackUrl,
-            onValueChange = vm::setMpesaCallbackUrl,
-            label         = "Callback URL",
-            placeholder   = "https://your-gateway.run.app/mpesa/callback",
-            leadingIcon   = Icons.Default.Link,
-            keyboardType  = KeyboardType.Uri,
-        )
-    }
-}
 
 // ── Step: Gateway ─────────────────────────────────────────────────────────────
 
@@ -384,7 +331,6 @@ fun BottomNavBar(state: OnboardingState, vm: OnboardingViewModel) {
         OnboardingStep.GITHUB,
         OnboardingStep.LINEAR,
         OnboardingStep.WHATSAPP,
-        OnboardingStep.MPESA,
     )
     val isLast = state.step == OnboardingStep.GATEWAY
 

@@ -27,18 +27,11 @@ GMAIL_ACCESS_TOKEN=gmail-access-token:latest,\
 GMAIL_REFRESH_TOKEN=gmail-refresh-token:latest,\
 GMAIL_CLIENT_ID=gmail-client-id:latest,\
 GMAIL_CLIENT_SECRET=gmail-client-secret:latest,\
-MPESA_CONSUMER_KEY=mpesa-consumer-key:latest,\
-MPESA_CONSUMER_SECRET=mpesa-consumer-secret:latest,\
-MPESA_SHORTCODE=mpesa-shortcode:latest,\
-MPESA_PASSKEY=mpesa-passkey:latest,\
 VONAGE_API_KEY=vonage-api-key:latest,\
 VONAGE_API_SECRET=vonage-api-secret:latest,\
 VONAGE_APP_ID=vonage-app-id:latest,\
 VONAGE_PRIVATE_KEY=vonage-private-key:latest,\
 VONAGE_FROM_NUMBER=vonage-from-number:latest,\
-TG_API_ID=tg-api-id:latest,\
-TG_API_HASH=tg-api-hash:latest,\
-TG_SESSION_STRING=tg-session-string:latest,\
 GOOGLE_GENAI_API_KEY=google-genai-api-key:latest,\
 AGENTPHONE_API_KEY=agentphone-api-key:latest,\
 FIREBASE_PROJECT_ID=firebase-project-id:latest" \
@@ -58,7 +51,5 @@ echo "  Vonage events      : ${URL}/vonage/webhooks/event"
 echo "  WhatsApp inbound   : ${URL}/wa/webhook/inbound"
 echo "  WhatsApp status    : ${URL}/wa/webhook/status"
 echo "  AgentPhone webhook : ${URL}/agentphone/webhook/agentphone"
-echo "  M-Pesa STK Callback: ${URL}/mpesa/stk/callback"
 echo "  Email gateway      : ${URL}/email/list"
-echo "  MCP SSE (M-Pesa)   : ${URL}/mpesa/sse"
 echo "  MCP SSE (Vonage)   : ${URL}/vonage/sse"

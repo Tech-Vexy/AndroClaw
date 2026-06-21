@@ -1,6 +1,5 @@
 package ai.androclaw.agent
 
-import ai.androclaw.tools.mpesa.MpesaTools
 import ai.androclaw.tools.telephony.TelephonyTools
 import ai.androclaw.tools.messaging.WhatsAppTools
 import ai.androclaw.tools.memory.MemoryTools
@@ -27,27 +26,13 @@ class AgentToolsTest {
             vonageMsgApiKey      = System.getenv("VONAGE_MSG_API_KEY")     ?: "test_key",
             vonageMsgApiSecret   = System.getenv("VONAGE_MSG_API_SECRET")  ?: "test_secret",
             vonageMsgFromNumber  = System.getenv("VONAGE_MSG_FROM_NUMBER") ?: "+254700000000",
-            mpesaConsumerKey     = System.getenv("MPESA_CONSUMER_KEY")     ?: "test_key",
-            mpesaConsumerSecret  = System.getenv("MPESA_CONSUMER_SECRET")  ?: "test_secret",
-            mpesaShortcode       = System.getenv("MPESA_SHORTCODE")        ?: "174379",
-            mpesaPasskey         = System.getenv("MPESA_PASSKEY")          ?: "test_passkey",
-            mpesaCallbackUrl     = "https://example.com/mpesa/callback",
+
             gatewayBaseUrl       = System.getenv("GATEWAY_BASE_URL")       ?: "https://test-gateway.example.com",
         )
     }
 
     // ── Tool registration ──────────────────────────────────────────────────────
 
-    @Test
-    fun `MpesaTools registers 4 tools`() {
-        val tools = MpesaTools(config).allTools()
-        assertEquals(4, tools.size)
-        val names = tools.map { it.descriptor.name }.toSet()
-        assertTrue("mpesa_stk_push" in names)
-        assertTrue("mpesa_check_balance" in names)
-        assertTrue("mpesa_transaction_status" in names)
-        assertTrue("mpesa_b2c_send" in names)
-    }
 
     @Test
     fun `TelephonyTools registers 3 tools`() {

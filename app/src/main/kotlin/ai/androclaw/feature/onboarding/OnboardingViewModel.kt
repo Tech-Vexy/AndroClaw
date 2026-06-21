@@ -18,7 +18,6 @@ enum class OnboardingStep {
     GITHUB,
     LINEAR,
     WHATSAPP,
-    MPESA,
     GATEWAY,
     DONE,
 }
@@ -50,12 +49,7 @@ data class OnboardingState(
     val vonageMsgFromNumber: String = "",
     val vonageMsgSandbox: Boolean  = true,
 
-    val mpesaConsumerKey: String    = "",
-    val mpesaConsumerSecret: String = "",
-    val mpesaShortcode: String      = "",
-    val mpesaPasskey: String        = "",
-    val mpesaCallbackUrl: String    = "",
-    val mpesaEnv: String            = "sandbox",
+
 
     val gatewayUrl: String          = "",
 )
@@ -88,12 +82,7 @@ class OnboardingViewModel(
     fun setVonageMsgApiSecret(v: String) = update { copy(vonageMsgApiSecret = v) }
     fun setVonageMsgFromNumber(v: String) = update { copy(vonageMsgFromNumber = v) }
     fun setVonageMsgSandbox(v: Boolean)  = update { copy(vonageMsgSandbox = v) }
-    fun setMpesaConsumerKey(v: String)  = update { copy(mpesaConsumerKey = v) }
-    fun setMpesaConsumerSecret(v: String) = update { copy(mpesaConsumerSecret = v) }
-    fun setMpesaShortcode(v: String)    = update { copy(mpesaShortcode = v) }
-    fun setMpesaPasskey(v: String)      = update { copy(mpesaPasskey = v) }
-    fun setMpesaCallbackUrl(v: String)  = update { copy(mpesaCallbackUrl = v) }
-    fun setMpesaEnv(v: String)          = update { copy(mpesaEnv = v) }
+
     fun setGatewayUrl(v: String)        = update { copy(gatewayUrl = v) }
 
     // ── Navigation ────────────────────────────────────────────────────────────
@@ -130,9 +119,7 @@ class OnboardingViewModel(
                 set(ConfigStore.VOICE_AUTO_SPEAK,   s.autoSpeak)
                 set(ConfigStore.VONAGE_MSG_FROM,   s.vonageMsgFromNumber)
                 set(ConfigStore.VONAGE_MSG_SANDBOX, s.vonageMsgSandbox)
-                set(ConfigStore.MPESA_SHORTCODE,    s.mpesaShortcode)
-                set(ConfigStore.MPESA_CALLBACK_URL, s.mpesaCallbackUrl)
-                set(ConfigStore.MPESA_ENV,          s.mpesaEnv)
+
                 set(ConfigStore.GATEWAY_BASE_URL,   s.gatewayUrl)
 
                 // ── Secrets (EncryptedSharedPreferences) ──────────────────
@@ -145,9 +132,7 @@ class OnboardingViewModel(
                 setLinearApiKey(s.linearApiKey)
                 setVonageMsgApiKey(s.vonageMsgApiKey)
                 setVonageMsgApiSecret(s.vonageMsgApiSecret)
-                setMpesaConsumerKey(s.mpesaConsumerKey)
-                setMpesaConsumerSecret(s.mpesaConsumerSecret)
-                setMpesaPasskey(s.mpesaPasskey)
+
                 setOnboardingDone()
             }
 
@@ -160,9 +145,6 @@ class OnboardingViewModel(
                     ConfigStore.VOICE_AUTO_SPEAK.name to s.autoSpeak,
                     ConfigStore.VONAGE_MSG_FROM.name to s.vonageMsgFromNumber,
                     ConfigStore.VONAGE_MSG_SANDBOX.name to s.vonageMsgSandbox,
-                    ConfigStore.MPESA_SHORTCODE.name to s.mpesaShortcode,
-                    ConfigStore.MPESA_CALLBACK_URL.name to s.mpesaCallbackUrl,
-                    ConfigStore.MPESA_ENV.name to s.mpesaEnv,
                     ConfigStore.GATEWAY_BASE_URL.name to s.gatewayUrl,
 
                     ConfigStore.SecretKeys.GOOGLE_GENAI_API_KEY to s.googleGenAiKey,
@@ -173,10 +155,7 @@ class OnboardingViewModel(
                     ConfigStore.SecretKeys.GITHUB_PAT to s.githubPat,
                     ConfigStore.SecretKeys.LINEAR_API_KEY to s.linearApiKey,
                     ConfigStore.SecretKeys.VONAGE_MSG_API_KEY to s.vonageMsgApiKey,
-                    ConfigStore.SecretKeys.VONAGE_MSG_API_SECRET to s.vonageMsgApiSecret,
-                    ConfigStore.SecretKeys.MPESA_CONSUMER_KEY to s.mpesaConsumerKey,
-                    ConfigStore.SecretKeys.MPESA_CONSUMER_SECRET to s.mpesaConsumerSecret,
-                    ConfigStore.SecretKeys.MPESA_PASSKEY to s.mpesaPasskey
+                    ConfigStore.SecretKeys.VONAGE_MSG_API_SECRET to s.vonageMsgApiSecret
                 )
                 firestoreManager.saveUserConfig(currentUser.uid, configMap)
             }
@@ -205,7 +184,6 @@ class OnboardingViewModel(
             OnboardingStep.GITHUB,
             OnboardingStep.LINEAR,
             OnboardingStep.WHATSAPP,
-            OnboardingStep.MPESA      -> true
             OnboardingStep.DONE       -> true
         }
         _state.update { it.copy(canProceed = valid) }

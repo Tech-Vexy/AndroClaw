@@ -4,7 +4,6 @@ import ai.androclaw.agent.OpenClawAgent
 import ai.androclaw.agent.OpenClawConfig
 import ai.androclaw.agent.memory.OpenClawMemoryStore
 import ai.androclaw.tools.memory.MemoryTools
-import ai.androclaw.tools.mpesa.MpesaTools
 import ai.androclaw.tools.messaging.WhatsAppTools
 import ai.androclaw.tools.messaging.WaMessage
 import kotlinx.coroutines.test.runTest
@@ -27,19 +26,11 @@ import org.junit.Assert.*
 class AgentIntegrationTest {
 
     private val googleGenAiKey = System.getenv("GOOGLE_GENAI_API_KEY") ?: ""
-    private val mpesaKey      = System.getenv("MPESA_CONSUMER_KEY")   ?: ""
-    private val mpesaSecret   = System.getenv("MPESA_CONSUMER_SECRET")?: ""
-    private val gatewayUrl    = System.getenv("GATEWAY_BASE_URL")     ?: ""
+    private val gatewayUrl     = System.getenv("GATEWAY_BASE_URL")     ?: ""
     private val vonageApiKey   = System.getenv("VONAGE_MSG_API_KEY")   ?: ""
-
     private fun config(overrides: OpenClawConfig.() -> OpenClawConfig = { this }) =
         OpenClawConfig(
             googleGenAiApiKey    = googleGenAiKey,
-            mpesaConsumerKey     = mpesaKey,
-            mpesaConsumerSecret  = mpesaSecret,
-            mpesaShortcode       = System.getenv("MPESA_SHORTCODE")  ?: "174379",
-            mpesaPasskey         = System.getenv("MPESA_PASSKEY")    ?: "",
-            mpesaCallbackUrl     = "$gatewayUrl/mpesa/callback",
             vonageMsgApiKey      = vonageApiKey,
             vonageMsgApiSecret   = System.getenv("VONAGE_MSG_API_SECRET") ?: "",
             vonageMsgFromNumber  = System.getenv("VONAGE_MSG_FROM_NUMBER") ?: "14157386102",
@@ -69,17 +60,17 @@ class AgentIntegrationTest {
 
         // Teach the agent a fact
         val saveResp = agent.run(
-            "Remember this: my M-Pesa shortcode is 174379 and I prefer to receive payment confirmations in Kiswahili."
+            "Remember this: my WhatsApp prefix is +254 and I prefer to receive payment confirmations in Kiswahili."
         )
         println("Save response: $saveResp")
-
+ 
         // Ask it to recall
-        val recallResp = agent.run("What is my M-Pesa shortcode?")
+        val recallResp = agent.run("What is my WhatsApp prefix?")
         println("Recall response: $recallResp")
-
+ 
         assertTrue(
-            "Agent should recall the shortcode",
-            recallResp?.contains("174379") == true,
+            "Agent should recall the prefix",
+            recallResp?.contains("+254") == true,
         )
     }
 
@@ -94,31 +85,12 @@ class AgentIntegrationTest {
         val lower = result!!.lowercase()
         // Should mention at least some of our tool categories
         assertTrue(
-            "Agent should mention M-Pesa or messaging tools",
-            lower.contains("mpesa") || lower.contains("whatsapp") || lower.contains("sms"),
+            "Agent should mention messaging tools",
+            lower.contains("whatsapp") || lower.contains("sms"),
         )
         println("Tools description: $result")
     }
 
-    // ── M-Pesa sandbox tests ──────────────────────────────────────────────────
-
-    @Test
-    fun `MpesaTools fetches sandbox access token`() = runTest {
-        assumeTrue("MPESA_CONSUMER_KEY required", mpesaKey.isNotBlank())
-        assumeTrue("MPESA_CONSUMER_SECRET required", mpesaSecret.isNotBlank())
-
-        val tools = MpesaTools(config())
-        // Access token fetch is internal — validate indirectly via balance check
-        // (Balance is async in Daraja sandbox; we just check no exception thrown)
-        try {
-            val result = tools.BalanceTool().execute(Unit)
-            println("Balance result: $result")
-            assertNotNull(result)
-        } catch (e: Exception) {
-            // Sandbox may reject if credentials invalid — log and pass
-            println("Balance check error (expected in sandbox): ${e.message}")
-        }
-    }
 
     // ── WhatsApp message provider tests ───────────────────────────────────────
 

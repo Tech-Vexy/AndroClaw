@@ -220,33 +220,6 @@ object McpClientManager {
         ))
     }
 
-    // ── M-Pesa (self-hosted MCP on Render) ────────────────────────────────────
-
-    fun mpesaMcp(config: OpenClawConfig): ToolRegistry = runBlocking {
-        val transport = McpToolRegistryProvider.defaultSseTransport(
-            "${config.gatewayBaseUrl}/mcp/mpesa/sse",
-            HttpClient {
-                install(DefaultRequest) {
-                    header("X-Bridge-Secret", config.bridgeSecret)
-                }
-            }
-        )
-        val registry = McpToolRegistryProvider.fromTransport(
-            transport,
-            McpServerInfo("${config.gatewayBaseUrl}/mcp/mpesa/sse", ""),
-            DefaultMcpToolDescriptorParser,
-            "mpesa",
-            "1.0"
-        ) as ToolRegistry
-        registry.filter(setOf(
-            "mpesa_stk_push",
-            "mpesa_b2c_send",
-            "mpesa_check_balance",
-            "mpesa_transaction_status",
-            "mpesa_reverse_transaction",
-        ))
-    }
-
     // ── Helpers ───────────────────────────────────────────────────────────────
 
     private fun ToolRegistry.filter(allowedNames: Set<String>): ToolRegistry {

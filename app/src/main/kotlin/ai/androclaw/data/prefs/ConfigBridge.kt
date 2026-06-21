@@ -69,18 +69,6 @@ object ConfigBridge {
             vonageMsgFromNumber = plain(ConfigStore.VONAGE_MSG_FROM,
                                         BuildConfig.VONAGE_MSG_FROM_NUMBER),
             vonageMsgSandbox    = (prefs[ConfigStore.VONAGE_MSG_SANDBOX] ?: true),
-            // M-Pesa
-            mpesaConsumerKey    = secret(ConfigStore.SecretKeys.MPESA_CONSUMER_KEY,
-                                         BuildConfig.MPESA_CONSUMER_KEY),
-            mpesaConsumerSecret = secret(ConfigStore.SecretKeys.MPESA_CONSUMER_SECRET,
-                                         BuildConfig.MPESA_CONSUMER_SECRET),
-            mpesaShortcode      = plain(ConfigStore.MPESA_SHORTCODE,
-                                        BuildConfig.MPESA_SHORTCODE),
-            mpesaPasskey        = secret(ConfigStore.SecretKeys.MPESA_PASSKEY,
-                                         BuildConfig.MPESA_PASSKEY),
-            mpesaCallbackUrl    = plain(ConfigStore.MPESA_CALLBACK_URL),
-            mpesaEnv            = plain(ConfigStore.MPESA_ENV, "sandbox"),
-
             // Gateway
             gatewayBaseUrl   = plain(ConfigStore.GATEWAY_BASE_URL,
                                      BuildConfig.GATEWAY_BASE_URL),

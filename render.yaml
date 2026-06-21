@@ -32,18 +32,6 @@ services:
         sync: false
       - key: GMAIL_CLIENT_SECRET
         sync: false
-      - key: MPESA_CONSUMER_KEY
-        sync: false
-      - key: MPESA_CONSUMER_SECRET
-        sync: false
-      - key: MPESA_SHORTCODE
-        sync: false
-      - key: MPESA_PASSKEY
-        sync: false
-      - key: MPESA_CALLBACK_BASE_URL
-        sync: false
-      - key: MPESA_ENV
-        value: "sandbox"
       - key: VONAGE_API_KEY
         sync: false
       - key: VONAGE_API_SECRET

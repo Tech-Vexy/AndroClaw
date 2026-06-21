@@ -38,14 +38,6 @@ data class OpenClawConfig(
     val vonageMsgSandbox: Boolean   = true,
 
 
-    // M-Pesa (Daraja)
-    val mpesaConsumerKey: String    = "",
-    val mpesaConsumerSecret: String = "",
-    val mpesaShortcode: String      = "",
-    val mpesaPasskey: String        = "",
-    val mpesaCallbackUrl: String    = "",
-    val mpesaEnv: String            = "sandbox",  // "sandbox" | "production"
-
     // Gateway (Render)
     val gatewayBaseUrl: String      = "",
     val bridgeSecret: String        = "",
@@ -61,7 +53,6 @@ data class OpenClawConfig(
     val hasGoogle: Boolean    get() = googleOAuthToken.isNotBlank()
     val hasGitHub: Boolean    get() = githubPat.isNotBlank()
     val hasLinear: Boolean    get() = linearApiKey.isNotBlank()
-    val hasMpesa: Boolean     get() = mpesaConsumerKey.isNotBlank()
     val hasGateway: Boolean   get() = gatewayBaseUrl.startsWith("https://")
     val hasWhatsApp: Boolean  get() = vonageMsgApiKey.isNotBlank() && vonageMsgApiSecret.isNotBlank()
     val hasGoogleGenAi: Boolean get() = googleGenAiApiKey.isNotBlank()

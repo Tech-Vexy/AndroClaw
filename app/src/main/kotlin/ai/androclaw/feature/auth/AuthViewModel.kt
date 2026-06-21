@@ -151,9 +151,6 @@ class AuthViewModel(
                         "user_name" -> configStore.set(ConfigStore.USER_NAME, value)
                         "language" -> configStore.set(ConfigStore.LANGUAGE, value)
                         "vonage_msg_from_number" -> configStore.set(ConfigStore.VONAGE_MSG_FROM, value)
-                        "mpesa_shortcode" -> configStore.set(ConfigStore.MPESA_SHORTCODE, value)
-                        "mpesa_callback_url" -> configStore.set(ConfigStore.MPESA_CALLBACK_URL, value)
-                        "mpesa_env" -> configStore.set(ConfigStore.MPESA_ENV, value)
                         "gateway_base_url" -> configStore.set(ConfigStore.GATEWAY_BASE_URL, value)
                         
                         // Secrets
@@ -166,9 +163,6 @@ class AuthViewModel(
                         "linear_api_key" -> configStore.setLinearApiKey(value)
                         "vonage_msg_api_key" -> configStore.setVonageMsgApiKey(value)
                         "vonage_msg_api_secret" -> configStore.setVonageMsgApiSecret(value)
-                        "mpesa_consumer_key" -> configStore.setMpesaConsumerKey(value)
-                        "mpesa_consumer_secret" -> configStore.setMpesaConsumerSecret(value)
-                        "mpesa_passkey" -> configStore.setMpesaPasskey(value)
                     }
                 } else if (value is Boolean) {
                     when (key) {

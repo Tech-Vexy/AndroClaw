@@ -6,7 +6,6 @@ import ai.androclaw.tools.calendar.CalendarTools
 import ai.androclaw.tools.email.EmailTools
 import ai.androclaw.tools.memory.MemoryTools
 import ai.androclaw.tools.messaging.WhatsAppTools
-import ai.androclaw.tools.mpesa.MpesaTools
 import ai.androclaw.tools.telephony.TelephonyTools
 import ai.androclaw.tools.telephony.SendSmsTool
 import ai.androclaw.tools.telephony.MakeCallTool
@@ -77,10 +76,6 @@ object OpenClawAgent {
             localTools.addAll(memTools.allTools())
         }
         
-        // M-Pesa Tools
-        if (config.hasMpesa) {
-            localTools.addAll(MpesaTools(config).allTools())
-        }
         // Calendar & Email Tools
         localTools.addAll(CalendarTools(config).allTools())
         localTools.addAll(EmailTools(config).allTools())
@@ -121,9 +116,7 @@ object OpenClawAgent {
             if (config.hasAgentPhone) {
                 tools(McpClientManager.agentPhoneMcp(config).tools)
             }
-            if (config.hasGateway) {
-                tools(McpClientManager.mpesaMcp(config).tools)
-            }
+
         }
         
         val builder = AIAgent.builder()
@@ -180,7 +173,6 @@ object OpenClawAgent {
             3. Tumia huduma za Cloud APIs (AgentPhone kwa calls/SMS, Vonage kwa WhatsApp) badala ya kufungua apps za native.
             
             Maagizo ya Kazi:
-            - M-Pesa: Unaweza kuangalia salio au kutuma pesa ukitumia mpesa_stk_push na mpesa_b2c_send.
             - Telephony: Piga simu kwa kutumia telephony_make_call na tuma SMS kwa kutumia telephony_send_sms.
             - WhatsApp: Tuma ujumbe kupitia whatsapp_send_text au template.
             - Memory: Hifadhi habari muhimu ukitumia memory_save ili uzikumbuke baadaye.

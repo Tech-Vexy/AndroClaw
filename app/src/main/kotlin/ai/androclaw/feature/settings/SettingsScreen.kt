@@ -184,24 +184,6 @@ fun SettingsScreen(
             }
 
 
-            // ── M-Pesa ────────────────────────────────────────────────────
-            SettingsSection(icon = Icons.Default.AccountBalanceWallet, title = "M-Pesa (Daraja)") {
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    LanguageChip("Sandbox",    state.mpesaEnv == "sandbox",    { vm.setMpesaEnv("sandbox") },    Modifier.weight(1f))
-                    LanguageChip("Production", state.mpesaEnv == "production", { vm.setMpesaEnv("production") }, Modifier.weight(1f))
-                }
-                Spacer(Modifier.height(10.dp))
-                SecretTextField(state.mpesaConsumerKey,    vm::setMpesaConsumerKey,    "Consumer Key",    Icons.Default.VpnKey)
-                Spacer(Modifier.height(10.dp))
-                SecretTextField(state.mpesaConsumerSecret, vm::setMpesaConsumerSecret, "Consumer Secret", Icons.Default.Lock)
-                Spacer(Modifier.height(10.dp))
-                ConfigTextField(state.mpesaShortcode,      vm::setMpesaShortcode,      "Shortcode / Paybill", leadingIcon = Icons.Default.Tag)
-                Spacer(Modifier.height(10.dp))
-                SecretTextField(state.mpesaPasskey,        vm::setMpesaPasskey,        "Passkey",         Icons.Default.Password)
-                Spacer(Modifier.height(10.dp))
-                ConfigTextField(state.mpesaCallbackUrl,    vm::setMpesaCallbackUrl,    "Callback URL",    leadingIcon = Icons.Default.Link)
-            }
-
             // ── Gateway ───────────────────────────────────────────────────
             SettingsSection(icon = Icons.Default.Cloud, title = "Gateway") {
                 ConfigTextField(
