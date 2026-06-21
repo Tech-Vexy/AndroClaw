@@ -140,14 +140,14 @@ fun WelcomeStep(state: OnboardingState, vm: OnboardingViewModel) {
         }
 
         Text(
-            "Karibu OpenClaw",
+            "Welcome to AndroClaw",
             fontSize   = 28.sp,
             fontWeight = FontWeight.Bold,
             color      = TextPrimary,
             textAlign  = TextAlign.Center,
         )
         Text(
-            "Msaidizi wako wa AI binafsi.\nHebu tuanze na maelezo yako.",
+            "Your personal AI assistant.\nLet's get started with your setup.",
             fontSize  = 15.sp,
             color     = TextSecondary,
             textAlign = TextAlign.Center,
@@ -160,28 +160,28 @@ fun WelcomeStep(state: OnboardingState, vm: OnboardingViewModel) {
         ConfigTextField(
             value       = state.userName,
             onValueChange = vm::setUserName,
-            label       = "Jina lako / Your name",
-            placeholder = "e.g. Kamau",
+            label       = "Your name",
+            placeholder = "e.g. John",
             leadingIcon = Icons.Default.Person,
         )
 
         // Language selector
-        Text("Lugha / Language", fontSize = 13.sp, color = TextSecondary,
+        Text("Language", fontSize = 13.sp, color = TextSecondary,
             modifier = Modifier.fillMaxWidth())
         Row(
             modifier            = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             LanguageChip(
-                label    = "🇰🇪  Kiswahili",
-                selected = state.language == "sw",
-                onClick  = { vm.setLanguage("sw") },
-                modifier = Modifier.weight(1f),
-            )
-            LanguageChip(
                 label    = "🇬🇧  English",
                 selected = state.language == "en",
                 onClick  = { vm.setLanguage("en") },
+                modifier = Modifier.weight(1f),
+            )
+            LanguageChip(
+                label    = "🇰🇪  Kiswahili",
+                selected = state.language == "sw",
+                onClick  = { vm.setLanguage("sw") },
                 modifier = Modifier.weight(1f),
             )
         }
@@ -195,7 +195,7 @@ fun GoogleGenAiStep(state: OnboardingState, vm: OnboardingViewModel) {
     StepScaffold(
         icon        = Icons.Default.Key,
         title       = "Gemini API Key",
-        description = "OpenClaw uses Gemini as its brain. Get your key from Google AI Studio.",
+        description = "AndroClaw uses Gemini as its brain. Get your key from Google AI Studio.",
         helpUrl     = "https://aistudio.google.com/app/apikey",
         helpLabel   = "Get API key →",
     ) {
@@ -568,7 +568,7 @@ fun GoogleStep(state: OnboardingState, vm: OnboardingViewModel) {
     StepScaffold(
         icon        = Icons.Default.AccountCircle,
         title       = "Google (Gmail · Calendar · Drive)",
-        description = "Connect your Google account to give OpenClaw access to Gmail, Calendar, and Drive.",
+        description = "Connect your Google account to give AndroClaw access to Gmail, Calendar, and Drive.",
         isOptional  = true,
     ) {
         GoogleSignInButton(

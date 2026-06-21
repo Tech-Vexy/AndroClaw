@@ -176,6 +176,13 @@ class AuthViewModel(
         _uiState.update { it.copy(isLoading = false, isSuccess = true) }
     }
 
+    fun bypassAuth() {
+        viewModelScope.launch {
+            configStore.set(ConfigStore.IS_OFFLINE_MODE, true)
+            _uiState.update { it.copy(isSuccess = true) }
+        }
+    }
+
     fun signOut() {
         authManager.signOut()
         viewModelScope.launch {

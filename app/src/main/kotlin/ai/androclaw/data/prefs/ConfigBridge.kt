@@ -41,7 +41,7 @@ object ConfigBridge {
         OpenClawConfig(
             // Identity
             userName         = plain(ConfigStore.USER_NAME, "User"),
-            language         = plain(ConfigStore.LANGUAGE, "sw"),
+            language         = plain(ConfigStore.LANGUAGE, "en"),
 
             // LLM
             googleGenAiApiKey = secret(ConfigStore.SecretKeys.GOOGLE_GENAI_API_KEY,

@@ -11,7 +11,7 @@ data class OpenClawConfig(
     // Identity
     val userName: String            = "User",
     val deviceName: String          = "Android",
-    val language: String            = "sw",
+    val language: String            = "en",
 
     // LLM
     val googleGenAiApiKey: String   = "",

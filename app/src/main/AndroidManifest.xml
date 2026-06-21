@@ -52,7 +52,7 @@
 
     <application
         android:name=".OpenClawApplication"
-        android:label="OpenClaw"
+        android:label="@string/app_name"
         android:icon="@android:mipmap/sym_def_app_icon"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:allowBackup="true"
@@ -112,7 +112,7 @@
         <receiver
             android:name=".feature.device.OpenClawDeviceAdmin"
             android:exported="true"
-            android:label="OpenClaw Device Admin"
+            android:label="AndroClaw Device Admin"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data
                 android:name="android.app.device_admin"
@@ -126,7 +126,7 @@
         <service
             android:name=".feature.device.OpenClawAccessibilityService"
             android:exported="true"
-            android:label="OpenClaw Screen Reader"
+            android:label="AndroClaw Screen Reader"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
             <intent-filter>
                 <action android:name="android.accessibilityservice.AccessibilityService" />
@@ -140,7 +140,7 @@
         <service
             android:name=".feature.device.OpenClawNotificationListener"
             android:exported="true"
-            android:label="OpenClaw Notification Access"
+            android:label="AndroClaw Notification Access"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />

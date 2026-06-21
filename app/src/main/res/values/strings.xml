@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">OpenClaw</string>
+    <string name="app_name">AndroClaw</string>
     <string name="accessibility_service_description">
-        Allows OpenClaw to read screen content, interact with apps on your behalf,
+        Allows AndroClaw to read screen content, interact with apps on your behalf,
         perform gestures, and navigate the device. Required for agent-driven app automation.
     </string>
 </resources>

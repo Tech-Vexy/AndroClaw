@@ -39,10 +39,10 @@ class OpenClawForegroundService : Service() {
     private fun createNotificationChannel() {
         val channel = NotificationChannel(
             CHANNEL_ID,
-            "OpenClaw Agent",
+            "AndroClaw Agent",
             NotificationManager.IMPORTANCE_LOW,
         ).apply {
-            description = "OpenClaw AI assistant is active"
+            description = "AndroClaw AI assistant is active"
             setShowBadge(false)
         }
         getSystemService(NotificationManager::class.java)
@@ -56,7 +56,7 @@ class OpenClawForegroundService : Service() {
             PendingIntent.FLAG_IMMUTABLE,
         )
         return NotificationCompat.Builder(this, CHANNEL_ID)
-            .setContentTitle("OpenClaw")
+            .setContentTitle("AndroClaw")
             .setContentText("AI assistant is ready")
             .setSmallIcon(android.R.drawable.ic_dialog_info)
             .setContentIntent(pendingIntent)
@@ -66,8 +66,7 @@ class OpenClawForegroundService : Service() {
     }
 
     companion object {
-        const val CHANNEL_ID      = "openclaw_agent"
+        const val CHANNEL_ID      = "androclaw_agent"
         const val NOTIFICATION_ID = 1001
     }
 }
-

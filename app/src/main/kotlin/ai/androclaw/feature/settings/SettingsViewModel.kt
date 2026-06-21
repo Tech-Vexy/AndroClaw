@@ -16,7 +16,7 @@ data class SettingsState(
 
     // Identity
     val userName: String          = "",
-    val language: String          = "sw",
+    val language: String          = "en",
 
     // LLM
     val googleGenAiKey: String    = "",
@@ -65,7 +65,7 @@ class SettingsViewModel(
                         agentPhoneApiKey  = store.getSecret(ConfigStore.SecretKeys.AGENTPHONE_API_KEY),
                         isLoading         = false,
                         userName          = prefs[ConfigStore.USER_NAME]            ?: "",
-                        language          = prefs[ConfigStore.LANGUAGE]             ?: "sw",
+                        language          = prefs[ConfigStore.LANGUAGE]             ?: "en",
                         googleGenAiKey    = store.getSecret(ConfigStore.SecretKeys.GOOGLE_GENAI_API_KEY),
                         deepgramKey       = store.getSecret(ConfigStore.SecretKeys.DEEPGRAM_API_KEY),
                         cartesiaKey       = store.getSecret(ConfigStore.SecretKeys.CARTESIA_API_KEY),

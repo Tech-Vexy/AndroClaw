@@ -101,13 +101,13 @@ fun AuthScreen(
             )
             Spacer(Modifier.height(16.dp))
             Text(
-                text = "Androclaw AI",
+                text = "AndroClaw",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 color = TextPrimary
             )
             Text(
-                text = "Ingia ili uunganishe msaidizi wako binafsi",
+                text = "Sign in to connect your personal assistant",
                 fontSize = 14.sp,
                 color = TextSecondary,
                 textAlign = TextAlign.Center,
@@ -152,9 +152,9 @@ fun AuthScreen(
                             ) {
                                 Text(
                                     text = when (tab) {
-                                        AuthTab.EMAIL -> "Barua Pepe"
+                                        AuthTab.EMAIL -> "Email"
                                         AuthTab.GOOGLE -> "Google"
-                                        AuthTab.PHONE -> "Simu"
+                                        AuthTab.PHONE -> "Phone"
                                     },
                                     color = textCol,
                                     fontSize = 12.sp,
@@ -181,6 +181,18 @@ fun AuthScreen(
                         }
                     }
                 }
+            }
+
+            Spacer(Modifier.height(16.dp))
+            TextButton(
+                onClick = { vm.bypassAuth() }
+            ) {
+                Text(
+                    text = "Bypass Authentication (Offline Mode)",
+                    color = ClawBlue,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium
+                )
             }
 
             // Error Message Banner
@@ -268,11 +280,11 @@ fun EmailAuthTab(vm: AuthViewModel) {
             shape = RoundedCornerShape(8.dp),
             colors = ButtonDefaults.buttonColors(containerColor = ClawBlue)
         ) {
-            Text(if (isSignUp) "Sajili Akaunti" else "Ingia", fontWeight = FontWeight.Bold)
+            Text(if (isSignUp) "Sign Up" else "Sign In", fontWeight = FontWeight.Bold)
         }
 
         Text(
-            text = if (isSignUp) "Tayari una akaunti? Ingia hapa" else "Je, huna akaunti bado? Jisajili",
+            text = if (isSignUp) "Already have an account? Sign in here" else "Don't have an account yet? Sign up",
             color = ClawBlue,
             fontSize = 13.sp,
             textAlign = TextAlign.Center,
@@ -318,7 +330,7 @@ fun GoogleAuthTab(vm: AuthViewModel) {
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         Text(
-            "Ukitumia Google, utaunganishwa salama kupitia Firebase na unaweza kusawazisha maelezo yako.",
+            "By using Google, you will be securely authenticated via Firebase and your configurations can be synced.",
             color = TextSecondary,
             fontSize = 13.sp,
             textAlign = TextAlign.Center,
@@ -338,7 +350,7 @@ fun GoogleAuthTab(vm: AuthViewModel) {
                 tint = ClawBlue
             )
             Spacer(Modifier.width(10.dp))
-            Text("Ingia na Google", color = TextPrimary, fontWeight = FontWeight.Bold)
+            Text("Sign in with Google", color = TextPrimary, fontWeight = FontWeight.Bold)
         }
     }
 }
@@ -360,7 +372,7 @@ fun PhoneAuthTab(vm: AuthViewModel) {
             AuthTextField(
                 value = phoneNumber,
                 onValueChange = { phoneNumber = it },
-                label = "Phone Number (e.g. +254712345678)",
+                label = "Phone Number (e.g. +14155552671)",
                 leadingIcon = Icons.Default.Phone,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
             )
@@ -371,12 +383,12 @@ fun PhoneAuthTab(vm: AuthViewModel) {
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = ClawBlue)
             ) {
-                Text("Tuma Nambari ya Siri (SMS)", fontWeight = FontWeight.Bold)
+                Text("Send Verification PIN (SMS)", fontWeight = FontWeight.Bold)
             }
         } else {
             // Step 2: Input verification code
             Text(
-                "Nambari ya siri imetumwa kwa: $phoneNumber",
+                "Verification PIN sent to: $phoneNumber",
                 color = TextSecondary,
                 fontSize = 13.sp,
                 textAlign = TextAlign.Center,
@@ -386,7 +398,7 @@ fun PhoneAuthTab(vm: AuthViewModel) {
             AuthTextField(
                 value = smsCode,
                 onValueChange = { smsCode = it },
-                label = "SMS Code (Nambari ya Siri)",
+                label = "SMS Verification PIN",
                 leadingIcon = Icons.Default.Pin,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
@@ -397,7 +409,7 @@ fun PhoneAuthTab(vm: AuthViewModel) {
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = ClawBlue)
             ) {
-                Text("Thibitisha na Uingie", fontWeight = FontWeight.Bold)
+                Text("Verify and Sign In", fontWeight = FontWeight.Bold)
             }
         }
     }

@@ -65,10 +65,11 @@ fun OpenClawApp() {
         // Determine start destination from DataStore
         val authManager = koinGet<FirebaseAuthManager>()
         val startDest = remember {
-            if (!authManager.isUserLoggedIn) {
+            val store = ConfigStore(context)
+            val isOffline = runBlocking { store.isOfflineMode().first() }
+            if (!authManager.isUserLoggedIn && !isOffline) {
                 Routes.AUTH
             } else {
-                val store = ConfigStore(context)
                 val done  = runBlocking { store.onboardingDone().first() }
                 if (done) Routes.CHAT else Routes.ONBOARDING
             }
@@ -154,7 +155,7 @@ fun ChatScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("OpenClaw", style = MaterialTheme.typography.titleLarge) },
+                title = { Text("AndroClaw", style = MaterialTheme.typography.titleLarge) },
                 actions = {
                     if (isSpeaking) {
                         IconButton(onClick = voiceVm::stopSpeaking) {
@@ -298,7 +299,7 @@ fun InputBar(
             OutlinedTextField(
                 value         = text,
                 onValueChange = onTextChange,
-                placeholder   = { Text(if (isListening) "Nasikia…" else "Niambie…") },
+                placeholder   = { Text(if (isListening) "Listening…" else "Ask AndroClaw…") },
                 modifier      = Modifier.weight(1f),
                 maxLines      = 4,
                 shape         = RoundedCornerShape(24.dp),
@@ -314,13 +315,13 @@ fun InputBar(
 
 @Composable
 fun openClawColorScheme() = darkColorScheme(
-    primary          = Color(0xFF6C9EFF),
-    onPrimary        = Color(0xFF0D1B2A),
-    primaryContainer = Color(0xFF1E3A5F),
-    surface          = Color(0xFF0D1117),
-    surfaceVariant   = Color(0xFF1A1F2E),
-    onSurfaceVariant = Color(0xFFCDD5E0),
-    background       = Color(0xFF0D1117),
+    primary          = Color(0xFF38BDF8),
+    onPrimary        = Color(0xFF070B19),
+    primaryContainer = Color(0xFF0369A1),
+    surface          = Color(0xFF0B0F19),
+    surfaceVariant   = Color(0xFF1E2640),
+    onSurfaceVariant = Color(0xFFE2E8F0),
+    background       = Color(0xFF070B19),
 )
 
 @Composable

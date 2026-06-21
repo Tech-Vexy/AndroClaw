@@ -74,6 +74,7 @@ class ConfigStore(private val context: Context) {
         val USER_NAME           = stringPreferencesKey("user_name")
         val LANGUAGE            = stringPreferencesKey("language")
         val ONBOARDING_DONE     = booleanPreferencesKey("onboarding_done")
+        val IS_OFFLINE_MODE     = booleanPreferencesKey("is_offline_mode")
 
         // Voice preferences (not secrets)
         val VOICE_AUTO_SPEAK    = booleanPreferencesKey("voice_auto_speak")
@@ -103,8 +104,9 @@ class ConfigStore(private val context: Context) {
         prefs.map { it[key] ?: default }
 
     fun onboardingDone(): Flow<Boolean> = get(ONBOARDING_DONE, false)
+    fun isOfflineMode(): Flow<Boolean>   = get(IS_OFFLINE_MODE, false)
     fun userName(): Flow<String>        = get(USER_NAME, "")
-    fun language(): Flow<String>        = get(LANGUAGE, "sw")
+    fun language(): Flow<String>        = get(LANGUAGE, "en")
     fun autoSpeak(): Flow<Boolean>      = get(VOICE_AUTO_SPEAK, true)
 
     /** Read a secret synchronously from EncryptedSharedPreferences. */
