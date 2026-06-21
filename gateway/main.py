@@ -29,9 +29,9 @@ app = FastAPI(title="Androclaw Unified Gateway")
 
 # ── Mount sub-routers ─────────────────────────────────────────────────────────
 
-from gateway.services.vonage         import router as vonage_router    # noqa: E402
-from gateway.services.whatsapp       import router as wa_router        # noqa: E402
-from gateway.services.agentphone     import router as agentphone_router  # noqa: E402
+from services.vonage         import router as vonage_router    # noqa: E402
+from services.whatsapp       import router as wa_router        # noqa: E402
+from services.agentphone     import router as agentphone_router  # noqa: E402
 
 app.include_router(vonage_router,     prefix="/vonage")
 app.include_router(wa_router,         prefix="/wa")
