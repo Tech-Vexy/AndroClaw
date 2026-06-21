@@ -131,19 +131,9 @@ val agentModule = module {
 
 val voiceModule = module {
     single {
-        val store  = get<ConfigStore>()
-        val dgKey  = store.getSecret(ConfigStore.SecretKeys.DEEPGRAM_API_KEY)
-        val ctKey  = store.getSecret(ConfigStore.SecretKeys.CARTESIA_API_KEY)
-        var lang   = "sw"
-        // Synchronous snapshot for construction — keys rarely change
-        kotlinx.coroutines.runBlocking {
-            store.get(ConfigStore.LANGUAGE, "sw").collect        { lang  = it }
-        }
         VoiceManager(
-            context         = androidContext(),
-            deepgramApiKey  = dgKey,
-            cartesiaApiKey  = ctKey,
-            language        = lang,
+            context = androidContext(),
+            store   = get(),
         )
     }
 }

@@ -22,6 +22,8 @@ import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonObject
 import timber.log.Timber
 import java.nio.ByteBuffer
+import ai.androclaw.data.prefs.ConfigStore
+import io.ktor.client.engine.okhttp.OkHttp
 
 /**
  * VoiceManager — full implementation.
@@ -41,10 +43,7 @@ import java.nio.ByteBuffer
  */
 class VoiceManager(
     private val context: Context,
-    private val deepgramApiKey: String,
-    private val cartesiaApiKey: String,
-    private val cartesiaVoiceId: String = VOICE_ID_SWAHILI,
-    private val language: String = "sw",
+    private val store: ConfigStore,
 ) {
     companion object {
         // Cartesia voice IDs — replace with your cloned/selected voices
@@ -63,7 +62,7 @@ class VoiceManager(
     }
 
     private val scope      = CoroutineScope(SupervisorJob() + Dispatchers.IO)
-    private val httpClient = HttpClient { install(WebSockets) }
+    private val httpClient = HttpClient(OkHttp) { install(WebSockets) }
 
     private val _transcriptions = MutableSharedFlow<String>(extraBufferCapacity = 32)
     val transcriptions: SharedFlow<String> = _transcriptions.asSharedFlow()
@@ -86,6 +85,8 @@ class VoiceManager(
 
         recordingJob = scope.launch {
             try {
+                val language = store.language().first()
+                val deepgramApiKey = store.getSecret(ConfigStore.SecretKeys.DEEPGRAM_API_KEY)
                 val langCode = if (language == "sw") "sw" else "en-US"
                 val wsUrl = "wss://api.deepgram.com/v1/listen" +
                         "?model=nova-2" +
@@ -188,6 +189,10 @@ class VoiceManager(
         speakingJob = scope.launch {
             _isSpeaking.value = true
             try {
+                val language = store.language().first()
+                val cartesiaApiKey = store.getSecret(ConfigStore.SecretKeys.CARTESIA_API_KEY)
+                val cartesiaVoiceId = store.prefs.first()[ConfigStore.CARTESIA_VOICE_ID] ?: VOICE_ID_SWAHILI
+
                 val modelId  = "sonic-multilingual"
                 val langTag  = if (language == "sw") "sw" else "en"
                 val voiceId  = if (language == "sw") cartesiaVoiceId else VOICE_ID_ENGLISH
@@ -195,7 +200,10 @@ class VoiceManager(
                 val requestBody = buildJsonObject {
                     put("model_id",   modelId)
                     put("transcript", text)
-                    put("language",   langTag)
+                    // Conditionally omit language tag if it is Swahili ("sw") to avoid Cartesia 400 Bad Request
+                    if (langTag != "sw") {
+                        put("language", langTag)
+                    }
                     putJsonObject("voice") {
                         put("mode", "id")
                         put("id",   voiceId)

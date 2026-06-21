@@ -33,7 +33,8 @@ class VoiceViewModel(
 
     override fun onCleared() {
         super.onCleared()
-        voiceManager.destroy()
+        voiceManager.stopListening()
+        voiceManager.stopSpeaking()
     }
 }
 
