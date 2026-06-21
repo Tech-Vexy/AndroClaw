@@ -2,8 +2,6 @@ package ai.androclaw.agent
 
 import ai.androclaw.agent.memory.OpenClawMemoryStore
 import ai.androclaw.mcp.McpClientManager
-import ai.androclaw.tools.calendar.CalendarTools
-import ai.androclaw.tools.email.EmailTools
 import ai.androclaw.tools.memory.MemoryTools
 import ai.androclaw.tools.messaging.WhatsAppTools
 import ai.androclaw.tools.telephony.TelephonyTools
@@ -76,9 +74,6 @@ object OpenClawAgent {
             localTools.addAll(memTools.allTools())
         }
         
-        // Calendar & Email Tools
-        localTools.addAll(CalendarTools(config).allTools())
-        localTools.addAll(EmailTools(config).allTools())
         
         // Add extra device tools passed from :app
         localTools.addAll(extraTools)

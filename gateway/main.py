@@ -4,7 +4,6 @@ Androclaw Unified Gateway
 Single Render service that hosts all sub-gateways under one URL.
 
 Route prefixes:
-  /email/…         — Gmail proxy
   /vonage/…        — Vonage telephony MCP (SSE + webhooks)
   /wa/…            — WhatsApp webhook (Vonage Messages)
   /agentphone/…    — AgentPhone webhook
@@ -30,12 +29,10 @@ app = FastAPI(title="Androclaw Unified Gateway")
 
 # ── Mount sub-routers ─────────────────────────────────────────────────────────
 
-from gateway.services.email_gw       import router as email_router     # noqa: E402
 from gateway.services.vonage         import router as vonage_router    # noqa: E402
 from gateway.services.whatsapp       import router as wa_router        # noqa: E402
 from gateway.services.agentphone     import router as agentphone_router  # noqa: E402
 
-app.include_router(email_router,      prefix="/email")
 app.include_router(vonage_router,     prefix="/vonage")
 app.include_router(wa_router,         prefix="/wa")
 app.include_router(agentphone_router, prefix="/agentphone")

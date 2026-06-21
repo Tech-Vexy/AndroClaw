@@ -23,10 +23,6 @@ gcloud run deploy "${SERVICE}" \
   --cpu          1 \
   --concurrency  80 \
   --set-secrets  "BRIDGE_SECRET=androclaw-bridge-secret:latest,\
-GMAIL_ACCESS_TOKEN=gmail-access-token:latest,\
-GMAIL_REFRESH_TOKEN=gmail-refresh-token:latest,\
-GMAIL_CLIENT_ID=gmail-client-id:latest,\
-GMAIL_CLIENT_SECRET=gmail-client-secret:latest,\
 VONAGE_API_KEY=vonage-api-key:latest,\
 VONAGE_API_SECRET=vonage-api-secret:latest,\
 VONAGE_APP_ID=vonage-app-id:latest,\
@@ -51,5 +47,4 @@ echo "  Vonage events      : ${URL}/vonage/webhooks/event"
 echo "  WhatsApp inbound   : ${URL}/wa/webhook/inbound"
 echo "  WhatsApp status    : ${URL}/wa/webhook/status"
 echo "  AgentPhone webhook : ${URL}/agentphone/webhook/agentphone"
-echo "  Email gateway      : ${URL}/email/list"
-echo "  MCP SSE (Vonage)   : ${URL}/vonage/sse"
+echo "  MCP SSE (Vonage)   : \${URL}/vonage/sse"
