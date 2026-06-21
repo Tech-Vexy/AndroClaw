@@ -16,12 +16,12 @@ from mcp.server.sse import SseServerTransport
 
 log = logging.getLogger("vonage-mcp")
 
-VONAGE_API_KEY     = os.environ["VONAGE_API_KEY"]
-VONAGE_API_SECRET  = os.environ["VONAGE_API_SECRET"]
+VONAGE_API_KEY     = os.environ.get("VONAGE_API_KEY", "")
+VONAGE_API_SECRET  = os.environ.get("VONAGE_API_SECRET", "")
 VONAGE_APP_ID      = os.environ.get("VONAGE_APP_ID", "")
 VONAGE_PRIVATE_KEY = os.environ.get("VONAGE_PRIVATE_KEY", "")
-VONAGE_FROM        = os.environ["VONAGE_FROM_NUMBER"]
-BRIDGE_SECRET      = os.environ["BRIDGE_SECRET"]
+VONAGE_FROM        = os.environ.get("VONAGE_FROM_NUMBER", "")
+BRIDGE_SECRET      = os.environ.get("BRIDGE_SECRET", "")
 FIREBASE_PROJECT   = os.environ.get("FIREBASE_PROJECT_ID", "")
 GATEWAY_BASE_URL   = os.environ.get("GATEWAY_BASE_URL", "")
 

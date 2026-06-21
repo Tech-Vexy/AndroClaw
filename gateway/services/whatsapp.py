@@ -12,15 +12,19 @@ from google.cloud import firestore
 
 log = logging.getLogger("wa-webhook")
 
-VONAGE_API_SECRET = os.environ["VONAGE_API_SECRET"]
-BRIDGE_SECRET     = os.environ["BRIDGE_SECRET"]
-FIREBASE_PROJECT  = os.environ["FIREBASE_PROJECT_ID"]
+VONAGE_API_SECRET = os.environ.get("VONAGE_API_SECRET", "")
+BRIDGE_SECRET     = os.environ.get("BRIDGE_SECRET", "")
+FIREBASE_PROJECT  = os.environ.get("FIREBASE_PROJECT_ID", "")
 DEVICE_ID         = os.environ.get("DEVICE_ID", "default")
 
-if not firebase_admin._apps:
-    firebase_admin.initialize_app()
-
-db = firestore.Client(project=FIREBASE_PROJECT)
+db = None
+if FIREBASE_PROJECT:
+    try:
+        if not firebase_admin._apps:
+            firebase_admin.initialize_app()
+        db = firestore.Client(project=FIREBASE_PROJECT)
+    except Exception as e:
+        log.error(f"Failed to initialize Firestore: {e}")
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
