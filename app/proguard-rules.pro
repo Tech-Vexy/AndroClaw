@@ -4,7 +4,7 @@
 -keepattributes *Annotation*, InnerClasses
 -dontnote kotlinx.serialization.AnnotationsKt
 -keepclassmembers class kotlinx.serialization.json.** { *** Companion; }
--keepclasseswithmembers class **$$serializer { INSTANCE; }
+-keepclasseswithmembers class **$$serializer { *** INSTANCE; }
 -keepclassmembers @kotlinx.serialization.Serializable class ** {
     *** Companion;
     *** INSTANCE;
@@ -58,3 +58,10 @@
 -keep class * extends androidx.work.ListenableWorker {
     public <init>(android.content.Context, androidx.work.WorkerParameters);
 }
+
+# ── Suppress missing OpenTelemetry / AutoValue warnings ─────────────────────
+-dontwarn com.google.auto.value.AutoValue$CopyAnnotations
+-dontwarn io.opentelemetry.api.incubator.metrics.ExtendedDoubleHistogram
+-dontwarn io.opentelemetry.api.incubator.metrics.ExtendedDoubleHistogramBuilder
+-dontwarn io.opentelemetry.api.incubator.metrics.ExtendedLongCounter
+-dontwarn io.opentelemetry.api.incubator.metrics.ExtendedLongCounterBuilder
