@@ -32,3 +32,4 @@ gateway/**/venv/
 captures/
 .externalNativeBuild/
 .cxx/
+*/.venv/

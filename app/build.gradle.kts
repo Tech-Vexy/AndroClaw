@@ -70,6 +70,7 @@ android {
             isMinifyEnabled   = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig     = signingConfigs.getByName("debug")
             buildConfigField("String", "GATEWAY_BASE_URL",
                 "\"${localProp("GATEWAY_BASE_URL_RELEASE", "https://androclaw-wa-webhook.onrender.com")}\"")        }
     }
